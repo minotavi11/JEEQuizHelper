@@ -261,6 +261,22 @@
       gap: 8px;
     }
 
+    .explanation {
+      display: none;
+      margin-top: 6px;
+      border-left: 4px solid #8cb9cc;
+      background: #f7fbff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: #334e68;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .explanation.visible {
+      display: block;
+    }
+
     .option {
       text-align: left;
       color: var(--ink);
@@ -396,6 +412,7 @@
         <span class="question-category" id="categoryBadge"></span>
         <h2 class="question-text" id="questionText"></h2>
         <div class="options" id="optionsList"></div>
+        <div class="explanation" id="explanationBox"></div>
       </article>
 
       <div class="nav">
@@ -442,6 +459,7 @@
       categoryBadge: document.getElementById("categoryBadge"),
       questionText: document.getElementById("questionText"),
       optionsList: document.getElementById("optionsList"),
+      explanationBox: document.getElementById("explanationBox"),
       prevBtn: document.getElementById("prevBtn"),
       nextBtn: document.getElementById("nextBtn"),
       finishBtn: document.getElementById("finishBtn"),
@@ -637,6 +655,15 @@
 
         el.optionsList.appendChild(optionBtn);
       });
+
+      if (state.completed) {
+        const explanation = (q.explanation || "No explanation available for this question.").trim();
+        el.explanationBox.textContent = `Explanation: ${explanation}`;
+        el.explanationBox.classList.add("visible");
+      } else {
+        el.explanationBox.textContent = "";
+        el.explanationBox.classList.remove("visible");
+      }
 
       el.prevBtn.disabled = idx === 0;
       el.nextBtn.disabled = idx >= total - 1;
