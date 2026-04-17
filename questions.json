@@ -1,0 +1,2391 @@
+{
+  "title": "Jakarta EE (JEE) Course \u2013 Quiz Questions v2",
+  "description": "Multiple-choice questions covering the full JEE course material, grouped by topic. Suitable for beginners with minimal Java experience. Code-based questions are marked with 'code': true. Approximately 1 code question per 4 conceptual questions.",
+  "categories": [
+    {
+      "category": "Jakarta EE \u2013 Introduction & Overview",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is Jakarta EE mainly designed for?",
+          "options": [
+            "A) Creating desktop GUI applications",
+            "B) Building robust, scalable, and secure distributed enterprise applications",
+            "C) Writing scripts to automate file operations",
+            "D) Developing mobile apps for Android"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta EE was created to facilitate the development of robust, highly available, secure, and scalable distributed applications."
+        },
+        {
+          "id": 2,
+          "question": "What happened to Java EE in September 2019?",
+          "options": [
+            "A) It was discontinued and replaced by Spring",
+            "B) It was renamed to Java Enterprise Edition 11",
+            "C) It became open source and was renamed Jakarta EE under the Eclipse Foundation",
+            "D) Oracle took sole ownership of it"
+          ],
+          "answer": "C",
+          "explanation": "In September 2019, Java EE became open source with the new name Jakarta EE, with its standards transferred to the Eclipse Open Source Foundation."
+        },
+        {
+          "id": 3,
+          "question": "Which of the following best describes a Jakarta EE 'Profile'?",
+          "options": [
+            "A) A user account in the application server admin console",
+            "B) A subset of the full platform targeting a specific use case",
+            "C) A configuration file for setting up logging",
+            "D) A type of database connection pool"
+          ],
+          "answer": "B",
+          "explanation": "Profiles are subsets of the platform introduced to enable adherence to standards on smaller perimeters, such as the Web Profile or Core Profile."
+        },
+        {
+          "id": 4,
+          "question": "Which Jakarta EE profile is specifically designed for microservices and early (ahead-of-time) compilation?",
+          "options": [
+            "A) Web Profile",
+            "B) Full Profile",
+            "C) Core Profile",
+            "D) Micro Profile"
+          ],
+          "answer": "C",
+          "explanation": "The Core Profile has even fewer specifications than the Web Profile and is designed for microservices and early compilation."
+        },
+        {
+          "id": 5,
+          "question": "What does 'Programming by Exception' (Convention over Configuration) mean in Jakarta EE?",
+          "options": [
+            "A) You must always define all behaviors explicitly in XML files",
+            "B) You only configure things that differ from the common default behavior",
+            "C) Exceptions in code are handled automatically by the container",
+            "D) The container throws exceptions whenever configuration is missing"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta EE uses Convention over Configuration, meaning there is no need to define the most common behaviors by metadata \u2014 only exceptions to the defaults need to be specified."
+        },
+        {
+          "id": 6,
+          "question": "Which of the following is a Jakarta EE container type?",
+          "options": [
+            "A) Docker Container",
+            "B) EJB Container",
+            "C) Python Container",
+            "D) SQL Container"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta EE defines three main container types: the EJB (Enterprise JavaBeans) Container, the Web (Servlet) Container, and the CDI Container."
+        },
+        {
+          "id": 7,
+          "question": "What is the purpose of a Jakarta EE container?",
+          "options": [
+            "A) To compile Java source code into bytecode",
+            "B) To provide services like security, transactions, and lifecycle management so developers can focus on business logic",
+            "C) To store and retrieve data from a relational database",
+            "D) To render HTML pages directly in a web browser"
+          ],
+          "answer": "B",
+          "explanation": "Containers provide critical services and features, allowing developers to focus on implementing business logic rather than solving low-level technical problems."
+        },
+        {
+          "id": 8,
+          "question": "Which packaging format is used for a full Jakarta EE enterprise application that bundles multiple modules?",
+          "options": [
+            "A) .zip",
+            "B) .war",
+            "C) .ear",
+            "D) .tar"
+          ],
+          "answer": "C",
+          "explanation": "Jakarta EE defines different module types: .war (web module), .jar (EJB module), and .ear (Enterprise Archive, which bundles multiple modules)."
+        },
+        {
+          "id": 9,
+          "question": "What are the two ways to provide configuration metadata in Jakarta EE?",
+          "options": [
+            "A) JSON files and YAML files",
+            "B) Annotations and deployment descriptors (XML files)",
+            "C) Properties files and environment variables only",
+            "D) Java code comments and README files"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta EE uses a declarative programming mode, using annotations (attached to code) and deployment descriptors (XML configuration files) to declare and customize container services."
+        },
+        {
+          "id": 10,
+          "question": "Which tier in the Jakarta EE Application Architecture is responsible for rendering user interfaces (HTML/JS) and making HTTP requests?",
+          "options": [
+            "A) Data/Resource Tier",
+            "B) Business Logic/Middle Tier",
+            "C) Client Tier",
+            "D) Web/Presentation Tier"
+          ],
+          "answer": "C",
+          "explanation": "The Client Tier contains the Web Browser (HTML/JS) or App Client (Swing/CLI) that communicates with the server via HTTP/HTTPS or REST."
+        },
+        {
+          "id": 11,
+          "question": "Which of the following open-source projects is an example of a Jakarta EE application server?",
+          "options": [
+            "A) Apache Tomcat (full Jakarta EE)",
+            "B) GlassFish",
+            "C) Node.js",
+            "D) Nginx"
+          ],
+          "answer": "B",
+          "explanation": "GlassFish is an open-source Jakarta EE application server. Tomcat is only a Servlet container and does not implement the full Jakarta EE specification."
+        },
+        {
+          "id": 12,
+          "question": "In Jakarta EE 10, which new feature was introduced in the Core Profile?",
+          "options": [
+            "A) SOAP web service support",
+            "B) Support for virtual threads",
+            "C) The Core Profile itself, designed for microservices and lean runtimes",
+            "D) Jakarta Data 1.0"
+          ],
+          "answer": "C",
+          "explanation": "Jakarta EE 10 (released September 2022) introduced the Core Profile, a minimal profile designed for microservices and early compilation runtimes."
+        },
+        {
+          "id": 13,
+          "code": true,
+          "question": "Look at this Maven pom.xml snippet. What does this dependency declaration do?\n\n<dependency>\n  <groupId>jakarta.platform</groupId>\n  <artifactId>jakarta.jakartaee-api</artifactId>\n  <version>10.0.0</version>\n  <scope>provided</scope>\n</dependency>",
+          "options": [
+            "A) It bundles the full Jakarta EE API inside the deployed .war file",
+            "B) It makes the full Jakarta EE 10 API available at compile time but expects the application server to provide it at runtime",
+            "C) It downloads Jakarta EE 10 and installs it as the application server",
+            "D) It restricts the project to only using Jakarta EE Web Profile APIs"
+          ],
+          "answer": "B",
+          "explanation": "The 'provided' scope means the Jakarta EE API jar is used during compilation but will NOT be bundled in the artifact \u2014 the application server supplies it at runtime."
+        },
+        {
+          "id": 174,
+          "code": true,
+          "question": "A developer builds a web application and packages it. What type of archive is produced, and where does it get deployed?\n\n$ mvn package\n# produces: target/myapp.war\n# then deployed to Payara Server",
+          "options": [
+            "A) A .jar file \u2014 deployed to the EJB container only",
+            "B) A .war (Web Application Archive) \u2014 deployed to the Web Container of the application server, making servlets and REST endpoints accessible",
+            "C) A .ear file \u2014 required for all Jakarta EE deployments",
+            "D) A .zip file \u2014 extracted by the application server at startup"
+          ],
+          "answer": "B",
+          "explanation": "mvn package produces a .war file for a web application. The .war is deployed to the Web Container (e.g., Payara, WildFly), which hosts servlets, JAX-RS resources, JSF pages, and WebSocket endpoints."
+        },
+        {
+          "id": 175,
+          "code": true,
+          "question": "Looking at the Jakarta EE Application Architecture, a request comes in from a Web Browser. What is the correct path through the tiers for a typical REST call that reads data from a database?\n\nWeb Browser \u2192 ??? \u2192 ??? \u2192 ??? \u2192 Database",
+          "options": [
+            "A) Web Browser \u2192 EJB Container \u2192 Web Container \u2192 Persistence Layer \u2192 Database",
+            "B) Web Browser \u2192 Web Container (JAX-RS) \u2192 Business Layer (CDI/EJB) \u2192 Persistence Layer (JPA) \u2192 Database",
+            "C) Web Browser \u2192 Persistence Layer \u2192 Web Container \u2192 EJB Container \u2192 Database",
+            "D) Web Browser \u2192 Database \u2192 Persistence Layer \u2192 Web Container \u2192 Browser"
+          ],
+          "answer": "B",
+          "explanation": "A typical REST request flows: Web Browser \u2192 Web Container (where JAX-RS resource handles HTTP) \u2192 Business Layer (CDI beans or EJBs with business logic) \u2192 Persistence Layer (JPA/EntityManager) \u2192 Database."
+        }
+      ]
+    },
+    {
+      "category": "Apache Maven",
+      "questions": [
+        {
+          "id": 14,
+          "question": "What is Apache Maven primarily used for in a Java project?",
+          "options": [
+            "A) Writing and debugging Java code in an IDE",
+            "B) Managing project dependencies, building, and automating the project lifecycle",
+            "C) Deploying web pages to a CDN",
+            "D) Running unit tests only"
+          ],
+          "answer": "B",
+          "explanation": "Apache Maven is a tool that facilitates and automates both the management and construction of a Java project, including dependency management and lifecycle phases."
+        },
+        {
+          "id": 15,
+          "question": "What is the name of the XML file that describes a Maven project?",
+          "options": [
+            "A) build.xml",
+            "B) project.xml",
+            "C) pom.xml",
+            "D) maven.xml"
+          ],
+          "answer": "C",
+          "explanation": "Maven uses an XML file called pom.xml (Project Object Model) to describe a project, its dependencies, plugins, and build configuration."
+        },
+        {
+          "id": 16,
+          "question": "In Maven, what does the 'provided' scope mean for a dependency?",
+          "options": [
+            "A) The dependency will be bundled inside the final .war or .ear file",
+            "B) The dependency is only needed for running tests",
+            "C) The dependency is available at compile time but will be provided by the runtime environment (e.g., the application server)",
+            "D) The dependency is downloaded from a private repository"
+          ],
+          "answer": "C",
+          "explanation": "The 'provided' scope means the APIs are provided by the application server at runtime, so they should not be packaged inside the application artifact."
+        },
+        {
+          "id": 17,
+          "question": "Which Maven lifecycle phase packages the project into a .war or .jar file?",
+          "options": [
+            "A) compile",
+            "B) test",
+            "C) package",
+            "D) validate"
+          ],
+          "answer": "C",
+          "explanation": "The 'package' phase packages the compiled code into its distributable format, such as a JAR or WAR file."
+        },
+        {
+          "id": 18,
+          "question": "What is the Maven Central Repository?",
+          "options": [
+            "A) A folder on your local hard disk where Maven stores project files",
+            "B) The default online repository from which Maven downloads missing dependency artifacts",
+            "C) A plugin for deploying to production servers",
+            "D) The admin console of an application server"
+          ],
+          "answer": "B",
+          "explanation": "The Central Repository is the default repository used by Maven to download missing artifacts when they are not already in the local repository."
+        },
+        {
+          "id": 19,
+          "question": "In which order does Maven execute its default lifecycle phases?",
+          "options": [
+            "A) compile \u2192 validate \u2192 test \u2192 package \u2192 install",
+            "B) validate \u2192 compile \u2192 test \u2192 package \u2192 install",
+            "C) test \u2192 compile \u2192 validate \u2192 install \u2192 package",
+            "D) package \u2192 compile \u2192 test \u2192 validate \u2192 install"
+          ],
+          "answer": "B",
+          "explanation": "Maven's default lifecycle runs: validate \u2192 compile \u2192 test \u2192 package \u2192 install (and then deploy). Each phase depends on the previous ones completing successfully."
+        },
+        {
+          "id": 20,
+          "question": "What is stored in Maven's local repository on your hard disk?",
+          "options": [
+            "A) The Java source code of your project only",
+            "B) All artifacts (JARs, POMs) that Maven has downloaded or that your projects have installed locally",
+            "C) The compiled bytecode of the currently running application server",
+            "D) Configuration files for all Maven plugins"
+          ],
+          "answer": "B",
+          "explanation": "Maven's local repository (~/.m2/repository by default) stores all downloaded dependencies and locally installed artifacts so they don't need to be re-downloaded."
+        },
+        {
+          "id": 21,
+          "code": true,
+          "question": "You want to use the Jakarta EE Web Profile in your project instead of the full platform. Which artifactId should you use in pom.xml?\n\n<dependency>\n  <groupId>jakarta.platform</groupId>\n  <artifactId>???</artifactId>\n  <version>10.0.0</version>\n  <scope>provided</scope>\n</dependency>",
+          "options": [
+            "A) jakarta.jakartaee-api",
+            "B) jakarta.jakartaee-web-api",
+            "C) jakarta.jakartaee-core-api",
+            "D) jakarta.jakartaee-full-api"
+          ],
+          "answer": "B",
+          "explanation": "jakarta.jakartaee-web-api is used for the Web Profile. jakarta.jakartaee-api is for the full platform, and jakarta.jakartaee-core-api is for the Core Profile."
+        },
+        {
+          "id": 176,
+          "code": true,
+          "question": "You run 'mvn package' on a Jakarta EE project. Which of the following sequences of lifecycle phases does Maven actually execute?\n\n$ mvn package",
+          "options": [
+            "A) Only the 'package' phase \u2014 Maven runs exactly the phase you name",
+            "B) validate \u2192 compile \u2192 test \u2192 package \u2014 Maven runs all phases up to and including the one named",
+            "C) package \u2192 install \u2192 deploy \u2014 Maven runs the phase and all subsequent phases",
+            "D) compile \u2192 package, skipping validate and test"
+          ],
+          "answer": "B",
+          "explanation": "Maven's lifecycle is sequential \u2014 running 'mvn package' executes all phases from the beginning up to and including 'package': validate, compile, test, then package."
+        }
+      ]
+    },
+    {
+      "category": "Java Annotations",
+      "questions": [
+        {
+          "id": 22,
+          "question": "What is a Java annotation?",
+          "options": [
+            "A) A type of loop structure in Java",
+            "B) A comment that is ignored by the compiler",
+            "C) Metadata attached to your code that can be processed by the compiler or at runtime",
+            "D) A special type of Java class that extends Object"
+          ],
+          "answer": "C",
+          "explanation": "Annotations provide metadata about your code and can be used for compiler hints, code generation at compile/deployment time, or runtime processing."
+        },
+        {
+          "id": 23,
+          "question": "Which annotation is used to mark a method that overrides a method from a superclass?",
+          "options": [
+            "A) @Deprecated",
+            "B) @Override",
+            "C) @SuppressWarnings",
+            "D) @FunctionalInterface"
+          ],
+          "answer": "B",
+          "explanation": "@Override is placed above a method that redefines a method of a superclass, helping the compiler verify the override is correct."
+        },
+        {
+          "id": 24,
+          "question": "What does the @Retention(RetentionPolicy.RUNTIME) meta-annotation on a custom annotation mean?",
+          "options": [
+            "A) The annotation is only kept in the source code and discarded by the compiler",
+            "B) The annotation is kept in the .class file but not accessible at runtime",
+            "C) The annotation is available and can be read by reflection at runtime",
+            "D) The annotation is processed only during the build phase by Maven"
+          ],
+          "answer": "C",
+          "explanation": "RetentionPolicy.RUNTIME means the annotation is retained in the bytecode and is accessible at runtime via reflection."
+        },
+        {
+          "id": 25,
+          "question": "What does the @Target meta-annotation control?",
+          "options": [
+            "A) Which Java version the annotation requires",
+            "B) Which code elements (methods, fields, classes, etc.) the annotation can be applied to",
+            "C) The order in which annotations are processed",
+            "D) Whether the annotation is inherited by subclasses"
+          ],
+          "answer": "B",
+          "explanation": "@Target lets you specify which elements (FIELD, METHOD, TYPE, etc.) your custom annotation can be applied to, using the ElementType enumeration."
+        },
+        {
+          "id": 26,
+          "question": "What keyword is used to define a custom annotation type in Java?",
+          "options": [
+            "A) @class",
+            "B) @annotation",
+            "C) @interface",
+            "D) @define"
+          ],
+          "answer": "C",
+          "explanation": "A custom annotation is defined using the @interface keyword in its own .java file, e.g. public @interface MyAnnotation { }."
+        },
+        {
+          "id": 27,
+          "question": "Which built-in annotation tells the compiler that a method or class is obsolete and should no longer be used?",
+          "options": [
+            "A) @Override",
+            "B) @SuppressWarnings",
+            "C) @Deprecated",
+            "D) @Obsolete"
+          ],
+          "answer": "C",
+          "explanation": "@Deprecated marks a class, method, or field as obsolete. The compiler will issue a warning when deprecated code is used."
+        },
+        {
+          "id": 28,
+          "code": true,
+          "question": "What is wrong with the following custom annotation definition?\n\npublic @interface MyAnnotation {\n  String name();\n  int quantity() default 1;\n}\n\n@MyAnnotation(quantity = 2)\npublic class MyClass { }",
+          "options": [
+            "A) Nothing is wrong \u2014 this is valid Java",
+            "B) The 'default' keyword is not allowed in annotations",
+            "C) The 'name' element has no default value, so it must be provided \u2014 @MyAnnotation(quantity=2) is missing a value for 'name'",
+            "D) You cannot apply annotations to classes, only to methods"
+          ],
+          "answer": "C",
+          "explanation": "Since 'name' has no default value, it is required. The usage @MyAnnotation(quantity=2) will fail to compile because 'name' is not provided. It should be @MyAnnotation(name=\"something\", quantity=2)."
+        },
+        {
+          "id": 177,
+          "code": true,
+          "question": "Which of the following is the correct way to define a custom annotation that can only be placed on methods and is available at runtime?\n\nOption A:\n@Target(ElementType.METHOD)\n@Retention(RetentionPolicy.RUNTIME)\npublic @interface Audited { }\n\nOption B:\n@Target(ElementType.METHOD)\n@Retention(RetentionPolicy.SOURCE)\npublic @interface Audited { }\n\nOption C:\npublic class Audited extends Annotation { }\n\nOption D:\n@interface Audited { @Target METHOD; @Retention RUNTIME; }",
+          "options": [
+            "A) Option A \u2014 correct: @interface with @Target(METHOD) and @Retention(RUNTIME) makes it available at runtime on methods",
+            "B) Option B \u2014 @Retention(SOURCE) means it is discarded by the compiler and NOT available at runtime",
+            "C) Option C \u2014 annotations cannot be defined by extending a class",
+            "D) Option D \u2014 this is not valid Java annotation syntax"
+          ],
+          "answer": "A",
+          "explanation": "Option A is correct: @interface declares the annotation type, @Target(ElementType.METHOD) restricts it to methods, and @Retention(RetentionPolicy.RUNTIME) ensures it is available for reflection at runtime."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Servlet",
+      "questions": [
+        {
+          "id": 29,
+          "question": "What is a Jakarta Servlet?",
+          "options": [
+            "A) A Java object running in a Web Container that responds to HTTP requests and returns dynamic content",
+            "B) A database connection pool manager",
+            "C) A tool for compiling JSP pages into HTML",
+            "D) A configuration file for web applications"
+          ],
+          "answer": "A",
+          "explanation": "A servlet is a Java object running in a Web Container, responding to HTTP requests and dynamically returning content."
+        },
+        {
+          "id": 30,
+          "question": "Which annotation is used to map a servlet class to a URL pattern?",
+          "options": [
+            "A) @HttpServlet",
+            "B) @WebMapping",
+            "C) @WebServlet",
+            "D) @URLPattern"
+          ],
+          "answer": "C",
+          "explanation": "The @WebServlet annotation is the recommended way to register a servlet and map it to a URL path."
+        },
+        {
+          "id": 31,
+          "question": "What are the stages of a servlet's lifecycle, in the correct order?",
+          "options": [
+            "A) Initialization \u2192 Service \u2192 Loading \u2192 Instantiation \u2192 Destruction",
+            "B) Loading \u2192 Instantiation \u2192 Initialization \u2192 Service \u2192 Destruction",
+            "C) Service \u2192 Loading \u2192 Initialization \u2192 Instantiation \u2192 Destruction",
+            "D) Instantiation \u2192 Destruction \u2192 Loading \u2192 Service \u2192 Initialization"
+          ],
+          "answer": "B",
+          "explanation": "The servlet lifecycle managed by the Web Container goes: loading, instantiation, initialization, service, and destruction."
+        },
+        {
+          "id": 32,
+          "question": "Which method in an HttpServlet handles HTTP GET requests?",
+          "options": [
+            "A) doPost()",
+            "B) service()",
+            "C) doGet()",
+            "D) handleGet()"
+          ],
+          "answer": "C",
+          "explanation": "The doGet() method is overridden in an HttpServlet to handle HTTP GET requests."
+        },
+        {
+          "id": 33,
+          "question": "What is the purpose of a Servlet Filter?",
+          "options": [
+            "A) To render HTML templates from Facelets views",
+            "B) To intercept and modify server requests and/or responses (e.g. for authentication, logging, encryption)",
+            "C) To manage database transactions around servlet calls",
+            "D) To compress images served by the web application"
+          ],
+          "answer": "B",
+          "explanation": "Servlet filters implement the jakarta.servlet.Filter interface and are used to intercept/modify requests and responses for cross-cutting concerns."
+        },
+        {
+          "id": 34,
+          "question": "Which servlet scope is used to share data across the entire application (all users, all sessions)?",
+          "options": [
+            "A) Request scope (ServletRequest)",
+            "B) Session scope (HttpSession)",
+            "C) Application scope (ServletContext)",
+            "D) Thread scope"
+          ],
+          "answer": "C",
+          "explanation": "The application scope (ServletContext) allows attributes to be shared across the entire web application, available to all users and requests."
+        },
+        {
+          "id": 35,
+          "question": "What is the benefit of asynchronous servlet processing?",
+          "options": [
+            "A) It makes the HTML response load faster in the browser",
+            "B) It frees the servlet container thread while long processing runs on another thread, improving scalability",
+            "C) It allows multiple servlets to handle the same request in parallel",
+            "D) It caches the servlet response for future identical requests"
+          ],
+          "answer": "B",
+          "explanation": "Asynchronous processing delegates long-running work to another thread, freeing the container thread to handle other requests and improving server scalability."
+        },
+        {
+          "id": 36,
+          "question": "Which interface must a Servlet Filter implement?",
+          "options": [
+            "A) jakarta.servlet.HttpFilter",
+            "B) jakarta.servlet.Filter",
+            "C) jakarta.servlet.RequestInterceptor",
+            "D) jakarta.servlet.FilterChain"
+          ],
+          "answer": "B",
+          "explanation": "Filters must implement the jakarta.servlet.Filter interface, which defines the doFilter() method where the interception logic goes."
+        },
+        {
+          "id": 37,
+          "code": true,
+          "question": "What will happen when a browser sends a GET request to /hello for this servlet?\n\n@WebServlet(\"/hello\")\npublic class HelloServlet extends HttpServlet {\n  @Override\n  protected void doGet(HttpServletRequest req,\n                       HttpServletResponse resp)\n      throws ServletException, IOException {\n    resp.setContentType(\"text/plain\");\n    resp.getWriter().println(\"Hello!\");\n  }\n}",
+          "options": [
+            "A) The server returns an HTTP 404 because no web.xml entry exists",
+            "B) The server returns a plain-text response body containing 'Hello!'",
+            "C) The server returns an HTML page with 'Hello!' as the page title",
+            "D) The server throws a NullPointerException because HttpServletRequest is null"
+          ],
+          "answer": "B",
+          "explanation": "The @WebServlet annotation maps the servlet to /hello. doGet() sets the content type to text/plain and writes 'Hello!' as the response body \u2014 the browser receives plain text."
+        },
+        {
+          "id": 38,
+          "code": true,
+          "question": "A developer wants to share a counter across ALL users of the application. Which approach is correct?\n\nOption A:\n  req.setAttribute(\"counter\", count);\n\nOption B:\n  req.getSession().setAttribute(\"counter\", count);\n\nOption C:\n  getServletContext().setAttribute(\"counter\", count);\n\nOption D:\n  response.addHeader(\"counter\", String.valueOf(count));",
+          "options": [
+            "A) Option A \u2014 request scope shares data for the current request only",
+            "B) Option B \u2014 session scope shares data per individual user session",
+            "C) Option C \u2014 application scope (ServletContext) shares data across all users and requests",
+            "D) Option D \u2014 HTTP headers are used to share state between requests"
+          ],
+          "answer": "C",
+          "explanation": "ServletContext is the application-scoped object. Attributes set on it are visible to all servlets and all users. Request scope lasts only one request; session scope is per-user."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Contexts and Dependency Injection (CDI)",
+      "questions": [
+        {
+          "id": 39,
+          "question": "What is Dependency Injection (DI)?",
+          "options": [
+            "A) A technique where a class creates all its own dependencies using 'new'",
+            "B) A design pattern where dependent components are provided (injected) by a container rather than created manually",
+            "C) A way to inject SQL queries directly into Java code",
+            "D) A method for injecting configuration into a database"
+          ],
+          "answer": "B",
+          "explanation": "Dependency Injection is an implementation of Inversion of Control \u2014 a design pattern used to decouple dependent components by having a container provide the dependencies."
+        },
+        {
+          "id": 40,
+          "question": "Which annotation is used to inject a CDI bean into a class field?",
+          "options": [
+            "A) @Autowired",
+            "B) @Resource",
+            "C) @Inject",
+            "D) @Bean"
+          ],
+          "answer": "C",
+          "explanation": "@Inject is the standard CDI annotation for injecting a bean into a class field, constructor, or initializer method."
+        },
+        {
+          "id": 41,
+          "question": "What CDI scope should you use for a bean that should be shared across the entire application lifetime?",
+          "options": [
+            "A) @RequestScoped",
+            "B) @SessionScoped",
+            "C) @ApplicationScoped",
+            "D) @TransactionScoped"
+          ],
+          "answer": "C",
+          "explanation": "@ApplicationScoped creates a single bean instance for the entire application duration, shared by all users and requests."
+        },
+        {
+          "id": 42,
+          "question": "What CDI scope should you use for a bean that is unique per HTTP session (per logged-in user)?",
+          "options": [
+            "A) @RequestScoped",
+            "B) @SessionScoped",
+            "C) @ApplicationScoped",
+            "D) @Dependent"
+          ],
+          "answer": "B",
+          "explanation": "@SessionScoped ties the bean's lifecycle to an HTTP session, making it unique per user session."
+        },
+        {
+          "id": 43,
+          "question": "What is a CDI 'Qualifier'?",
+          "options": [
+            "A) An annotation that marks a class as a REST endpoint",
+            "B) An annotation used by the CDI container to choose which specific bean implementation to inject when multiple implementations exist",
+            "C) A way to qualify (validate) user input",
+            "D) A special interface that all CDI beans must implement"
+          ],
+          "answer": "B",
+          "explanation": "A qualifier is a custom annotation that helps the CDI container select the correct bean implementation when multiple beans implement the same type."
+        },
+        {
+          "id": 44,
+          "question": "In CDI, what happens when a managed bean is injected into another class?",
+          "options": [
+            "A) The class creates a new instance using 'new' under the hood",
+            "B) The container creates the bean instance, injects its dependencies, and calls @PostConstruct methods",
+            "C) The container finds the nearest bean in memory and passes it by reference without any lifecycle management",
+            "D) The developer must manually call init() before using the injected bean"
+          ],
+          "answer": "B",
+          "explanation": "When a bean is injected, the container creates the instance, injects its own dependencies, then calls methods annotated with @PostConstruct."
+        },
+        {
+          "id": 45,
+          "question": "What is the @Transactional annotation used for in CDI?",
+          "options": [
+            "A) To mark a class as a JPA entity",
+            "B) To intercept calls to a bean/method and manage database transactions automatically",
+            "C) To schedule a method to run at a fixed time interval",
+            "D) To enable async processing on a CDI bean"
+          ],
+          "answer": "B",
+          "explanation": "@Transactional is a CDI interceptor that intercepts calls to annotated beans/methods and handles transaction begin, commit, and rollback automatically."
+        },
+        {
+          "id": 46,
+          "question": "How do CDI Events allow beans to communicate?",
+          "options": [
+            "A) By sharing a static variable between bean classes",
+            "B) By calling each other's methods directly via injection",
+            "C) One bean fires an event using the Event interface, and another bean observes it with @Observes \u2014 with no compile-time dependency between them",
+            "D) Through a shared database table that both beans poll"
+          ],
+          "answer": "C",
+          "explanation": "CDI Events implement the Observer pattern: an emitter fires events using jakarta.enterprise.event.Event.fire(), and observers handle them via @Observes \u2014 completely decoupled."
+        },
+        {
+          "id": 47,
+          "question": "What is the purpose of the optional beans.xml file in CDI?",
+          "options": [
+            "A) It is required to list every single CDI bean class for the container to find them",
+            "B) It defines application-specific CDI settings such as enabling alternatives, specifying interceptors, or managing bean discovery",
+            "C) It contains the database connection string for JPA",
+            "D) It maps URL paths to servlet classes"
+          ],
+          "answer": "B",
+          "explanation": "beans.xml is optional. Without it, CDI performs automatic bean discovery. When present, it allows configuration like enabling alternatives, interceptors, and decorators."
+        },
+        {
+          "id": 48,
+          "question": "What is the CDI 'dependent' scope?",
+          "options": [
+            "A) The bean lives as long as the application",
+            "B) The bean is created fresh for each injection point and lives as long as the object it is injected into",
+            "C) The bean lives as long as the HTTP session",
+            "D) The bean lives for the duration of a single transaction"
+          ],
+          "answer": "B",
+          "explanation": "The default (dependent) scope means the bean has no scope of its own \u2014 it is created for each injection point and destroyed when the containing object is destroyed."
+        },
+        {
+          "id": 49,
+          "question": "What is a CDI Interceptor used for?",
+          "options": [
+            "A) To block unauthorized HTTP requests before they reach a servlet",
+            "B) To intercept method calls on beans in order to add cross-cutting behavior like transaction management, security, or logging",
+            "C) To intercept JMS messages before they are delivered to an MDB",
+            "D) To intercept database queries and apply caching"
+          ],
+          "answer": "B",
+          "explanation": "CDI Interceptors intercept method invocations on managed beans, allowing you to add transversal/cross-cutting functionality (transactions, security, auditing) without modifying business code."
+        },
+        {
+          "id": 50,
+          "question": "What is a CDI Producer method?",
+          "options": [
+            "A) A factory-like method annotated with @Produces that the container calls to create a bean instance when normal instantiation is not sufficient",
+            "B) A method that publishes CDI events to observers",
+            "C) A method that creates JMS messages for a queue",
+            "D) A method annotated with @PostConstruct that initializes a bean"
+          ],
+          "answer": "A",
+          "explanation": "Producer methods (and fields) annotated with @Produces act as factories, giving you control over bean instantiation \u2014 useful when you need to create beans from third-party classes or with custom logic."
+        },
+        {
+          "id": 51,
+          "code": true,
+          "question": "What is the scope of HelloWorldBean in this code, and what does it mean?\n\n@RequestScoped\npublic class HelloWorldBean { }\n\npublic class HelloServlet extends HttpServlet {\n  @Inject\n  HelloWorldBean service;\n  ...\n}",
+          "options": [
+            "A) Application scope \u2014 one shared instance for all users",
+            "B) Request scope \u2014 a new HelloWorldBean instance is created and injected for each individual HTTP request",
+            "C) Session scope \u2014 the same instance is reused for all requests from the same user",
+            "D) Dependent scope \u2014 the bean is created once and never destroyed"
+          ],
+          "answer": "B",
+          "explanation": "@RequestScoped means a new instance of HelloWorldBean is created for each HTTP request and destroyed when the request completes. This matches the course diagram exactly."
+        },
+        {
+          "id": 52,
+          "code": true,
+          "question": "In this CDI event example, which method gets called when ComplicatedService fires the event?\n\nclass TaskCompleted { }\n\n@ApplicationScoped\nclass ComplicatedService {\n  @Inject Event<TaskCompleted> event;\n  void doSomething() {\n    event.fire(new TaskCompleted());\n  }\n}\n\n@ApplicationScoped\nclass Logger {\n  void onTaskCompleted(@Observes TaskCompleted task) {\n    // log\n  }\n}",
+          "options": [
+            "A) doSomething() in ComplicatedService is called again recursively",
+            "B) onTaskCompleted() in Logger is called because it is annotated with @Observes TaskCompleted",
+            "C) The container calls all methods in Logger automatically",
+            "D) Nothing happens unless Logger is explicitly injected into ComplicatedService"
+          ],
+          "answer": "B",
+          "explanation": "When event.fire() is called with a TaskCompleted instance, the CDI container finds all methods annotated with @Observes TaskCompleted and invokes them synchronously \u2014 here that is Logger.onTaskCompleted()."
+        },
+        {
+          "id": 178,
+          "code": true,
+          "question": "Two beans implement the same interface. How does CDI know which one to inject here?\n\npublic interface GreetingService { String greet(); }\n\n@Superior\n@ApplicationScoped\npublic class FormalGreeting implements GreetingService {\n  public String greet() { return \"Good day.\"; }\n}\n\n@ApplicationScoped\npublic class CasualGreeting implements GreetingService {\n  public String greet() { return \"Hey!\"; }\n}\n\n// Injection point:\n@Inject @Superior\nGreetingService service;",
+          "options": [
+            "A) CDI picks the first one alphabetically \u2014 FormalGreeting",
+            "B) CDI uses the @Superior qualifier to select FormalGreeting specifically, because the injection point and the bean share the same qualifier",
+            "C) CDI throws an exception because two beans implement GreetingService",
+            "D) @ApplicationScoped on both beans causes a conflict \u2014 only one can exist"
+          ],
+          "answer": "B",
+          "explanation": "CDI qualifiers resolve ambiguity. The @Inject @Superior injection point tells CDI to select the bean also annotated with @Superior \u2014 FormalGreeting. Without the qualifier, CDI would throw an unsatisfied or ambiguous resolution error."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Enterprise Beans (EJB)",
+      "questions": [
+        {
+          "id": 53,
+          "question": "Which EJB type maintains no conversational state and is assigned to handle a single client request?",
+          "options": [
+            "A) Stateful Session Bean",
+            "B) Stateless Session Bean",
+            "C) Message-Driven Bean",
+            "D) Singleton EJB"
+          ],
+          "answer": "B",
+          "explanation": "Stateless Session Beans maintain no state; the EJB container assigns one to serve a client request and then returns it to the pool."
+        },
+        {
+          "id": 54,
+          "question": "Which EJB type is used to receive and process asynchronous messages from a JMS queue or topic?",
+          "options": [
+            "A) Stateless Session Bean",
+            "B) Stateful Session Bean",
+            "C) Message-Driven Bean (MDB)",
+            "D) Singleton EJB"
+          ],
+          "answer": "C",
+          "explanation": "Message-Driven Beans (MDBs) enable asynchronous delivery of messages sent by any Jakarta Messaging producer."
+        },
+        {
+          "id": 55,
+          "question": "How many instances of a Singleton EJB exist per application?",
+          "options": [
+            "A) One per user session",
+            "B) One per request",
+            "C) Exactly one for the entire application",
+            "D) As many as the container decides to pool"
+          ],
+          "answer": "C",
+          "explanation": "A Singleton EJB has only one instance per application, similar to a stateful session bean but shared application-wide."
+        },
+        {
+          "id": 56,
+          "question": "What is Container Managed Transaction (CMT) in EJB?",
+          "options": [
+            "A) The developer writes all transaction begin/commit/rollback code manually",
+            "B) The container handles transaction management declaratively through configuration or annotations",
+            "C) Transactions are managed by the database itself without any EJB involvement",
+            "D) Each HTTP request automatically gets its own database transaction"
+          ],
+          "answer": "B",
+          "explanation": "Container Managed Transaction is a declarative transaction management approach where the container handles the transaction lifecycle based on annotations or configuration."
+        },
+        {
+          "id": 57,
+          "question": "Are all Jakarta Enterprise Beans also CDI beans?",
+          "options": [
+            "A) No, EJBs and CDI beans are completely separate systems",
+            "B) Only Stateless Session Beans are CDI beans",
+            "C) Yes, all Jakarta Enterprise Beans are automatically CDI beans",
+            "D) Only if they are annotated with @Named"
+          ],
+          "answer": "C",
+          "explanation": "All Jakarta Enterprise Beans are automatically CDI beans, meaning they benefit from CDI features like dependency injection and interceptors."
+        },
+        {
+          "id": 58,
+          "question": "What is a Stateful Session Bean best suited for?",
+          "options": [
+            "A) Processing a single, stateless database query",
+            "B) Maintaining a conversational state across multiple requests with a single client (e.g., a shopping cart)",
+            "C) Consuming messages from a JMS queue asynchronously",
+            "D) Running scheduled background jobs"
+          ],
+          "answer": "B",
+          "explanation": "Stateful Session Beans maintain conversational state with a specific client across multiple method calls \u2014 ideal for multi-step interactions like a shopping cart or a wizard."
+        },
+        {
+          "id": 59,
+          "question": "What is the difference between @Remote and @Local EJB interface access?",
+          "options": [
+            "A) @Remote is for secure calls; @Local is for unsecured calls",
+            "B) @Remote allows the EJB to be called from a different JVM (e.g., a remote client); @Local is for calls within the same JVM",
+            "C) @Remote uses REST; @Local uses SOAP",
+            "D) @Remote persists data to a remote database; @Local uses a local in-memory store"
+          ],
+          "answer": "B",
+          "explanation": "@Remote marks the EJB interface as accessible from outside the JVM via RMI, while @Local is optimized for in-process calls within the same application server."
+        },
+        {
+          "id": 60,
+          "code": true,
+          "question": "Which EJB type does this class represent, and what is the role of @LocalBean?\n\n@Stateless\n@LocalBean\npublic class MessageProducer {\n  @Inject JMSContext context;\n  @Resource(lookup = \"java:global/queue/simpleQ\")\n  Queue queue;\n\n  public void sendMessage(String msg) {\n    context.createProducer().send(queue, msg);\n  }\n}",
+          "options": [
+            "A) A Stateful Session Bean; @LocalBean means it requires a local interface class",
+            "B) A Stateless Session Bean; @LocalBean means no separate business interface is needed \u2014 the class itself is the interface for local use",
+            "C) A Singleton EJB; @LocalBean marks it as a single-instance bean",
+            "D) A Message-Driven Bean; @LocalBean allows it to receive JMS messages locally"
+          ],
+          "answer": "B",
+          "explanation": "@Stateless marks it as a Stateless Session Bean. @LocalBean means there is no need to declare a separate business interface \u2014 the bean class itself can be used directly for local (same-JVM) calls."
+        },
+        {
+          "id": 179,
+          "code": true,
+          "question": "What type of EJB should you use for this use case, and which annotation declares it?\n\nYou need to implement a scheduled job that cleans up expired sessions in the database every hour.\n\nHint: Timer EJBs use @Schedule.",
+          "options": [
+            "A) @Stateless \u2014 stateless beans are best for scheduled tasks",
+            "B) @Singleton with @Schedule \u2014 a Singleton EJB with a timer method ensures only one instance handles the scheduled task, preventing duplicate execution",
+            "C) @MessageDriven \u2014 message-driven beans can be triggered by a timer topic",
+            "D) @Stateful \u2014 stateful beans maintain state between scheduled runs"
+          ],
+          "answer": "B",
+          "explanation": "Timer EJBs use @Singleton (one instance per app) combined with @Schedule to define scheduled tasks. This prevents multiple instances running the same cleanup job concurrently."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Persistence (JPA)",
+      "questions": [
+        {
+          "id": 61,
+          "question": "What problem does Jakarta Persistence (JPA) help solve?",
+          "options": [
+            "A) Sending emails from a Java application",
+            "B) The object-relational impedance mismatch \u2014 mapping Java objects to relational database tables",
+            "C) Rendering HTML pages in a browser",
+            "D) Managing concurrent threads in a server"
+          ],
+          "answer": "B",
+          "explanation": "JPA helps solve the object-relational impedance mismatch by providing annotations to map plain Java classes (POJOs) to relational database tables (ORM)."
+        },
+        {
+          "id": 62,
+          "question": "Which annotation marks a Java class as a JPA entity (a class that maps to a database table)?",
+          "options": [
+            "A) @Table",
+            "B) @Persistent",
+            "C) @Entity",
+            "D) @DataObject"
+          ],
+          "answer": "C",
+          "explanation": "@Entity marks a POJO as a persistent entity that JPA will map to a database table."
+        },
+        {
+          "id": 63,
+          "question": "What is the role of the EntityManager in JPA?",
+          "options": [
+            "A) It manages HTTP sessions for web applications",
+            "B) It is the central interface for persisting, finding, updating, removing, and querying entities",
+            "C) It manages the lifecycle of EJB beans",
+            "D) It handles CDI dependency injection"
+          ],
+          "answer": "B",
+          "explanation": "The EntityManager interface provides methods like persist, find, merge, and remove to interact with JPA entities in the persistence context."
+        },
+        {
+          "id": 64,
+          "question": "How do you inject an EntityManager into an EJB or CDI bean?",
+          "options": [
+            "A) @Inject EntityManager em;",
+            "B) @Resource EntityManager em;",
+            "C) @PersistenceContext EntityManager em;",
+            "D) @Autowired EntityManager em;"
+          ],
+          "answer": "C",
+          "explanation": "@PersistenceContext is the annotation used to inject an EntityManager into a Jakarta EE component."
+        },
+        {
+          "id": 65,
+          "question": "Which JPA annotation describes a 'one customer can have many orders' relationship on the customer side?",
+          "options": [
+            "A) @ManyToOne",
+            "B) @OneToOne",
+            "C) @OneToMany",
+            "D) @ManyToMany"
+          ],
+          "answer": "C",
+          "explanation": "@OneToMany on the Customer side describes a relationship where one customer can be associated with many Order entities."
+        },
+        {
+          "id": 66,
+          "question": "What is the Persistence Context?",
+          "options": [
+            "A) The XML file that configures the database connection",
+            "B) A set of in-memory managed entity instances tracked by the EntityManager",
+            "C) The connection pool used by JDBC",
+            "D) The cache that stores compiled SQL queries"
+          ],
+          "answer": "B",
+          "explanation": "The Persistence Context represents a set of in-memory managed entity instances tracked by the EntityManager. Changes to these entities are automatically synchronized with the database at transaction commit."
+        },
+        {
+          "id": 67,
+          "question": "Which query language is specific to JPA and works with Java entity objects rather than database tables directly?",
+          "options": [
+            "A) SQL",
+            "B) HQL",
+            "C) JPQL (Java Persistence Query Language)",
+            "D) XPath"
+          ],
+          "answer": "C",
+          "explanation": "JPQL (Java Persistence Query Language) is JPA's object-oriented query language that operates on entity objects and their properties rather than raw database tables."
+        },
+        {
+          "id": 68,
+          "question": "Which of the following is a common JPA pitfall?",
+          "options": [
+            "A) Entities are always eagerly loaded, causing slow startup",
+            "B) Related entities may be loaded lazily, causing unexpected errors or queries when accessed outside a transaction",
+            "C) JPA never generates any SQL queries",
+            "D) The EntityManager automatically commits all changes without a transaction"
+          ],
+          "answer": "B",
+          "explanation": "Lazy loading is a common JPA pitfall \u2014 related entities loaded lazily may cause LazyInitializationException or unexpected extra SQL queries if accessed outside a persistence context."
+        },
+        {
+          "id": 69,
+          "question": "What does the @GeneratedValue annotation do on a JPA entity field?",
+          "options": [
+            "A) It generates a random UUID for the field on every read",
+            "B) It tells JPA how the primary key value should be automatically generated (e.g., auto-increment)",
+            "C) It generates getter and setter methods at compile time",
+            "D) It creates the database column automatically during deployment"
+          ],
+          "answer": "B",
+          "explanation": "@GeneratedValue specifies the strategy for automatic primary key generation, such as IDENTITY (auto-increment), SEQUENCE, or TABLE."
+        },
+        {
+          "id": 70,
+          "question": "What does the @Column(length = 200) annotation tell JPA?",
+          "options": [
+            "A) The field must be exactly 200 characters long",
+            "B) The corresponding database column should have a maximum length of 200 characters",
+            "C) The field will be validated to never exceed 200 characters at runtime",
+            "D) JPA will split values longer than 200 characters across multiple columns"
+          ],
+          "answer": "B",
+          "explanation": "@Column(length=200) customizes the column definition \u2014 here it sets the VARCHAR length to 200 in the generated database schema."
+        },
+        {
+          "id": 71,
+          "question": "Which component in the JPA architecture is responsible for creating EntityManager instances?",
+          "options": [
+            "A) Persistence",
+            "B) PersistenceUnit",
+            "C) EntityManagerFactory",
+            "D) persistence.xml"
+          ],
+          "answer": "C",
+          "explanation": "EntityManagerFactory creates EntityManager instances. It is itself created by the Persistence bootstrap class (in Java SE) or configured via persistence.xml in a Jakarta EE container."
+        },
+        {
+          "id": 72,
+          "code": true,
+          "question": "What does this JPA entity define, and what will the resulting database table look like?\n\n@Entity\npublic class Book {\n  @Id @GeneratedValue\n  private Long id;\n  @Column(length = 200)\n  private String title;\n  private Float price;\n\n  public Book() { }\n  // Getters and setters\n}",
+          "options": [
+            "A) A non-persistent plain Java class called Book with no database mapping",
+            "B) A JPA entity mapped to a BOOK table with columns: ID (bigint, primary key, auto-generated), TITLE (varchar 200), and PRICE (double)",
+            "C) A JPA entity mapped to a BOOK table where all three columns are nullable=false by default",
+            "D) A JPA entity where 'id' is a String primary key and 'price' is stored as text"
+          ],
+          "answer": "B",
+          "explanation": "@Entity maps the class to a BOOK table. @Id @GeneratedValue makes ID the auto-generated primary key. @Column(length=200) limits TITLE to varchar(200). PRICE maps to a double/float column. Columns are nullable by default."
+        },
+        {
+          "id": 73,
+          "code": true,
+          "question": "What does this code do?\n\n@PersistenceContext(unitName=\"simplePU\")\nprivate EntityManager em;\n\npublic void saveBook(Book book) {\n  em.persist(book);\n}",
+          "options": [
+            "A) It reads a Book from the database by its primary key",
+            "B) It injects an EntityManager and uses it to insert (persist) a new Book entity into the database within the current transaction",
+            "C) It updates an existing Book record in the database",
+            "D) It deletes the Book entity from the persistence context"
+          ],
+          "answer": "B",
+          "explanation": "@PersistenceContext injects an EntityManager tied to the 'simplePU' persistence unit. em.persist(book) makes the Book entity managed and schedules it for INSERT into the database when the transaction commits."
+        },
+        {
+          "id": 180,
+          "code": true,
+          "question": "What is wrong with this JPA code, and how would you fix it?\n\npublic class BookRepository {\n  @PersistenceContext\n  private EntityManager em;\n\n  public void saveBook(Book book) {\n    em.persist(book);\n  }\n}\n\n// Book class:\npublic class Book {\n  private Long id;\n  private String title;\n}",
+          "options": [
+            "A) Nothing is wrong \u2014 this is valid JPA code",
+            "B) The Book class is missing the @Entity annotation \u2014 without it, JPA does not treat Book as a persistent entity and em.persist() will throw an exception",
+            "C) EntityManager cannot be injected with @PersistenceContext in a plain class \u2014 you must use new EntityManagerFactory()",
+            "D) The saveBook method must be annotated with @Transactional for any JPA operation to work"
+          ],
+          "answer": "B",
+          "explanation": "Without @Entity on the Book class, JPA does not recognize it as a mapped entity. em.persist() requires the argument to be an @Entity-annotated class. The fix is to add @Entity (and @Id on the id field) to Book."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Bean Validation",
+      "questions": [
+        {
+          "id": 74,
+          "question": "What is the main purpose of Jakarta Bean Validation?",
+          "options": [
+            "A) To validate the structure of XML configuration files",
+            "B) To apply validation rules to JavaBeans using annotations or XML, ensuring data integrity",
+            "C) To check the syntax of Java source code before compilation",
+            "D) To validate JPA entity mappings against the database schema"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta Bean Validation provides a standard way to validate data in JavaBeans using metadata (annotations or XML constraint definitions)."
+        },
+        {
+          "id": 75,
+          "question": "Which annotation ensures that a field value cannot be null?",
+          "options": [
+            "A) @NotEmpty",
+            "B) @NonNull",
+            "C) @NotNull",
+            "D) @Required"
+          ],
+          "answer": "C",
+          "explanation": "@NotNull is a predefined constraint in jakarta.validation.constraints that ensures the annotated field is not null."
+        },
+        {
+          "id": 76,
+          "question": "In Jakarta RESTful Web Services (JAX-RS), which annotation triggers automatic Bean Validation on a request parameter or entity?",
+          "options": [
+            "A) @Validated",
+            "B) @Valid",
+            "C) @Check",
+            "D) @Constrain"
+          ],
+          "answer": "B",
+          "explanation": "In JAX-RS, @Valid triggers Bean Validation on entities and request parameters, and the runtime returns HTTP 400 (Bad Request) on violation."
+        },
+        {
+          "id": 77,
+          "question": "What object does the Validator's validate() method return when a constraint is violated?",
+          "options": [
+            "A) A Boolean false value",
+            "B) A Set of ConstraintViolation objects describing each violation",
+            "C) A ValidationException with a single error message",
+            "D) An empty Optional"
+          ],
+          "answer": "B",
+          "explanation": "The validate() method returns a Set of ConstraintViolation objects, one for each violated constraint (the set is empty if there are no violations)."
+        },
+        {
+          "id": 78,
+          "question": "Where can Bean Validation constraints be applied?",
+          "options": [
+            "A) Only on class fields",
+            "B) Only on method return values",
+            "C) On beans, fields, constructors, method parameters, and return values",
+            "D) Only on classes annotated with @Entity"
+          ],
+          "answer": "C",
+          "explanation": "Bean Validation constraints can be applied to beans, attributes, constructors, parameters, and return values (method-level validation)."
+        },
+        {
+          "id": 79,
+          "question": "Which predefined constraint limits the length of a String field?",
+          "options": [
+            "A) @Max",
+            "B) @Length",
+            "C) @Size",
+            "D) @Limit"
+          ],
+          "answer": "C",
+          "explanation": "@Size(max = 2000) limits the size of the annotated element \u2014 for Strings it limits character count, for collections it limits element count."
+        },
+        {
+          "id": 80,
+          "code": true,
+          "question": "Given this bean, which of the following object instances would FAIL validation?\n\npublic class Book {\n  @NotNull\n  private String title;\n  @NotNull @Min(2)\n  private Float price;\n  @Size(max = 2000)\n  private String description;\n}",
+          "options": [
+            "A) new Book() with title=\"Clean Code\", price=29.99f, description=null",
+            "B) new Book() with title=null, price=5.0f, description=\"A great book\"",
+            "C) new Book() with title=\"Refactoring\", price=15.0f, description=\"\"",
+            "D) new Book() with title=\"DDD\", price=3.0f, description=null"
+          ],
+          "answer": "B",
+          "explanation": "title=null violates @NotNull on the title field. price=5.0f passes @Min(2). A null description is allowed (only @Size constrains length, not nullability). Option B fails because title is null."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Faces (JSF)",
+      "questions": [
+        {
+          "id": 81,
+          "question": "What design pattern is Jakarta Faces (JSF) built on?",
+          "options": [
+            "A) Singleton pattern",
+            "B) Observer pattern",
+            "C) Model-View-Controller (MVC) pattern",
+            "D) Factory pattern"
+          ],
+          "answer": "C",
+          "explanation": "JSF is built on the Model-View-Controller (MVC) pattern, where each part is separate: FacesServlet (controller), JSF pages (view), and managed beans (model)."
+        },
+        {
+          "id": 82,
+          "question": "In JSF, what is FacesServlet?",
+          "options": [
+            "A) The view component that renders HTML",
+            "B) The controller that manages the lifecycle of web applications and processes user requests",
+            "C) The model class that holds business data",
+            "D) A filter that handles authentication"
+          ],
+          "answer": "B",
+          "explanation": "FacesServlet acts as the controller in the JSF MVC model, managing the web application lifecycle and processing user requests."
+        },
+        {
+          "id": 83,
+          "question": "What is Facelets in JSF?",
+          "options": [
+            "A) A JavaScript library for dynamic UI effects",
+            "B) The preferred page description language for JSF that uses XHTML to describe UI components",
+            "C) A CSS framework used alongside JSF pages",
+            "D) A tool for generating database schemas from entity classes"
+          ],
+          "answer": "B",
+          "explanation": "Facelets is the preferred view technology in JSF, using XHTML to describe page components (as an alternative to JSP)."
+        },
+        {
+          "id": 84,
+          "question": "What does the Expression Language (EL) do in JSF?",
+          "options": [
+            "A) It compiles XHTML templates into Java bytecode",
+            "B) It links variables and actions between a UI component and a managed bean",
+            "C) It defines the navigation rules between pages",
+            "D) It encrypts data sent between the browser and server"
+          ],
+          "answer": "B",
+          "explanation": "JSF uses Expression Language (EL) to bind UI component values and actions to managed bean properties and methods."
+        },
+        {
+          "id": 85,
+          "question": "How many phases does the JSF page lifecycle have?",
+          "options": [
+            "A) Three",
+            "B) Four",
+            "C) Five",
+            "D) Six"
+          ],
+          "answer": "D",
+          "explanation": "The JSF page lifecycle has six distinct phases: Restore View, Apply Request Values, Process Validations, Update Model Values, Invoke Application, and Render Response."
+        },
+        {
+          "id": 86,
+          "question": "In JSF navigation, what is 'Global Navigation'?",
+          "options": [
+            "A) Navigating to an external website from a JSF application",
+            "B) Navigation based on rules defined in <navigation-rule> elements in the faces-config.xml file",
+            "C) Navigation that works across all browsers",
+            "D) Navigating directly to a page by typing its name in a method return value"
+          ],
+          "answer": "B",
+          "explanation": "Global navigation uses <navigation-rule> elements in faces-config.xml to define which page to navigate to based on the outcome string returned by an action method."
+        },
+        {
+          "id": 87,
+          "question": "What is the role of a Managed Bean in JSF?",
+          "options": [
+            "A) It compiles the XHTML Facelets pages",
+            "B) It forms the Model part of MVC \u2014 holding business data and logic that views bind to",
+            "C) It acts as the web container managing servlet lifecycle",
+            "D) It generates the WSDL for a SOAP web service"
+          ],
+          "answer": "B",
+          "explanation": "Managed beans make up the model in JSF MVC. They hold data and business logic that JSF views (pages) bind to via Expression Language."
+        },
+        {
+          "id": 88,
+          "code": true,
+          "question": "In this JSF Facelets snippet, what does #{credentials.username} do?\n\n<h:inputText id=\"userName\"\n  value=\"#{credentials.username}\" />",
+          "options": [
+            "A) It outputs the literal string 'credentials.username' on the page",
+            "B) It binds the input field's value to the 'username' property of the 'credentials' managed bean using EL",
+            "C) It creates a new managed bean called 'credentials' with a field 'username'",
+            "D) It calls a method named 'username()' on the credentials object"
+          ],
+          "answer": "B",
+          "explanation": "#{credentials.username} is an EL expression that two-way-binds the input field: JSF reads the bean property to pre-fill the field and writes the submitted value back to the bean property."
+        },
+        {
+          "id": 181,
+          "code": true,
+          "question": "In this JSF managed bean, what does the login() method need to return to navigate to a 'dashboard' page after successful login?\n\n@Named\n@SessionScoped\npublic class LoginController {\n  @Inject\n  private Credentials credentials;\n\n  public String login() {\n    if (isValid(credentials)) {\n      return ???;\n    }\n    return null;\n  }\n}",
+          "options": [
+            "A) return \"redirect:/dashboard\";",
+            "B) return \"dashboard\"; \u2014 JSF uses the returned String as the navigation outcome to find or navigate to dashboard.xhtml",
+            "C) return new FacesResponse(\"dashboard\");",
+            "D) return null; \u2014 returning null always navigates to the next page in sequence"
+          ],
+          "answer": "B",
+          "explanation": "In JSF, an action method returns a String outcome. Returning 'dashboard' tells the JSF navigation system to navigate to 'dashboard.xhtml' (explicit navigation). Returning null re-renders the current page."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta RESTful Web Services (JAX-RS)",
+      "questions": [
+        {
+          "id": 89,
+          "question": "What does REST stand for?",
+          "options": [
+            "A) Remote Execution and State Transfer",
+            "B) Representational State Transfer",
+            "C) Resource Endpoint and Service Technology",
+            "D) Reliable Enterprise Service Transport"
+          ],
+          "answer": "B",
+          "explanation": "REST stands for Representational State Transfer \u2014 a stateless, HTTP-based communication standard for modern applications."
+        },
+        {
+          "id": 90,
+          "question": "In JAX-RS, which annotation defines the URI path for a resource class or method?",
+          "options": [
+            "A) @URL",
+            "B) @Endpoint",
+            "C) @Path",
+            "D) @Route"
+          ],
+          "answer": "C",
+          "explanation": "@Path is the JAX-RS annotation used to define the URI path for a resource class or a specific resource method."
+        },
+        {
+          "id": 91,
+          "question": "Which HTTP method is typically used to CREATE a new resource in a RESTful API?",
+          "options": [
+            "A) GET",
+            "B) PUT",
+            "C) DELETE",
+            "D) POST"
+          ],
+          "answer": "D",
+          "explanation": "Following CRUD conventions, POST maps to Create \u2014 e.g., POST /users creates a new user."
+        },
+        {
+          "id": 92,
+          "question": "Which HTTP method is typically used to RETRIEVE a resource?",
+          "options": [
+            "A) GET",
+            "B) POST",
+            "C) PATCH",
+            "D) HEAD"
+          ],
+          "answer": "A",
+          "explanation": "GET maps to Read \u2014 e.g., GET /users/johndoe retrieves the profile of 'johndoe'."
+        },
+        {
+          "id": 93,
+          "question": "In JAX-RS, what does @PathParam do?",
+          "options": [
+            "A) It defines a query parameter in the URL (e.g., ?name=value)",
+            "B) It maps a segment of the URI path to a method parameter (e.g., /users/{userId})",
+            "C) It reads data from the HTTP request body",
+            "D) It injects the full URL of the request into a variable"
+          ],
+          "answer": "B",
+          "explanation": "@PathParam grabs the value from a URI path template variable (e.g., {userId}) and injects it into a method parameter."
+        },
+        {
+          "id": 94,
+          "question": "What HTTP status code does the JAX-RS Response.created() method set?",
+          "options": [
+            "A) 200 OK",
+            "B) 201 Created",
+            "C) 204 No Content",
+            "D) 302 Found"
+          ],
+          "answer": "B",
+          "explanation": "Response.created(uri) sets the HTTP response code to 201 Created and sets the Location header to the URI of the newly created resource."
+        },
+        {
+          "id": 95,
+          "question": "What is a JAX-RS Exception Mapper used for?",
+          "options": [
+            "A) Logging all exceptions to a file automatically",
+            "B) Mapping exceptions thrown during request processing to appropriate HTTP responses",
+            "C) Retrying failed requests automatically",
+            "D) Converting JSON parsing errors into CDI events"
+          ],
+          "answer": "B",
+          "explanation": "Exception Mappers implement ExceptionMapper<T> and allow you to catch specific exceptions and convert them into appropriate HTTP responses."
+        },
+        {
+          "id": 96,
+          "question": "What is Server-Sent Events (SSE) in JAX-RS?",
+          "options": [
+            "A) A bidirectional, real-time communication protocol over WebSocket",
+            "B) A standard for pushing real-time updates from the server to the client over a single HTTP connection in a unidirectional manner",
+            "C) A way for the client to send a stream of data to the server",
+            "D) A polling mechanism that the client uses to check for updates"
+          ],
+          "answer": "B",
+          "explanation": "SSE is a standard for unidirectional server-to-client real-time push over a single HTTP connection, supported in JAX-RS via SseEventSink and Sse interfaces."
+        },
+        {
+          "id": 97,
+          "question": "What does @BeanParam do in JAX-RS?",
+          "options": [
+            "A) It marks the method parameter as a CDI bean to be injected",
+            "B) It aggregates multiple request parameters (@QueryParam, @PathParam, etc.) into a single object",
+            "C) It converts the request body from JSON to a Java object",
+            "D) It validates that the parameter is a valid Jakarta Bean"
+          ],
+          "answer": "B",
+          "explanation": "@BeanParam allows you to group multiple parameter annotations (@QueryParam, @HeaderParam, etc.) into a single request object class, keeping resource method signatures clean."
+        },
+        {
+          "id": 98,
+          "question": "How does the JAX-RS client API make an HTTP call to a web resource?",
+          "options": [
+            "A) By using the java.net.URL class directly",
+            "B) By using the jakarta.ws.rs.client.WebTarget interface to build and execute requests",
+            "C) By sending raw TCP packets using a Socket",
+            "D) By injecting an HttpSession and calling its methods"
+          ],
+          "answer": "B",
+          "explanation": "The Jakarta REST client revolves around the WebTarget interface. You chain paths and parameters on a WebTarget, then call methods like get(), post() etc. to execute the HTTP call."
+        },
+        {
+          "id": 99,
+          "code": true,
+          "question": "What HTTP operation and path does this JAX-RS method handle, and what does it return?\n\n@GET\n@Path(\"{userId}\")\npublic UserResponse getUser(@PathParam(\"userId\") Long userId) {\n  return userService.getUser(userId);\n}",
+          "options": [
+            "A) POST to /users \u2014 creates a new user and returns it as JSON",
+            "B) GET to /users/{userId} (e.g., /users/42) \u2014 retrieves the user with that ID and returns it serialized as JSON",
+            "C) DELETE to /users/{userId} \u2014 removes the user with that ID",
+            "D) GET to /users \u2014 returns all users"
+          ],
+          "answer": "B",
+          "explanation": "@GET means it handles HTTP GET. @Path(\"{userId}\") appends a variable segment to the class-level path. @PathParam injects the ID. The UserResponse return type is automatically serialized to JSON (as defined by @Produces on the class)."
+        },
+        {
+          "id": 100,
+          "code": true,
+          "question": "What is the role of @ApplicationPath in this code, and what base URL will resource methods be accessible at?\n\n@ApplicationPath(\"api\")\npublic class RootResourceConfiguration extends Application { }",
+          "options": [
+            "A) It sets the context root of the entire web application to 'api'",
+            "B) It defines the base URI path '/api' for all JAX-RS resources \u2014 e.g., a resource at @Path('users') will be at /api/users",
+            "C) It configures the application to only accept requests with Content-Type: application/json",
+            "D) It maps the application to port 8080"
+          ],
+          "answer": "B",
+          "explanation": "@ApplicationPath defines the base path for all JAX-RS resources in the application. With @ApplicationPath(\"api\"), a resource class annotated @Path(\"users\") will be reachable at /api/users."
+        },
+        {
+          "id": 182,
+          "code": true,
+          "question": "What HTTP status code will this method return, and what does the Location header contain?\n\n@POST\npublic Response createUser(\n    @NotNull @Valid CreateUserRequest req,\n    @Context UriInfo uriInfo) {\n  UserResponse user = userService.createUser(req);\n  URI uri = uriInfo.getAbsolutePathBuilder()\n    .path(user.getData().getUserId().toString())\n    .build();\n  return Response.created(uri).entity(user).build();\n}",
+          "options": [
+            "A) 200 OK; Location header is not set",
+            "B) 201 Created; Location header contains the full URI of the newly created user (e.g., http://host/api/users/42)",
+            "C) 204 No Content; Location header contains the request URI",
+            "D) 302 Found; Location header redirects to the user list"
+          ],
+          "answer": "B",
+          "explanation": "Response.created(uri) sets HTTP 201 Created and automatically sets the Location header to the provided URI \u2014 in this case the absolute path of the new user resource. The entity (user object) is also returned in the response body."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta JSON Processing (JSON-P) & JSON Binding (JSON-B)",
+      "questions": [
+        {
+          "id": 101,
+          "question": "What are the two approaches for working with JSON in Jakarta JSON-P?",
+          "options": [
+            "A) DOM API and XPath API",
+            "B) Object Model API (in-memory tree) and Streaming API (event-based)",
+            "C) Push API and Pull API",
+            "D) Serialization API and Deserialization API"
+          ],
+          "answer": "B",
+          "explanation": "JSON-P offers the Object Model API (loads full JSON tree into memory) and the Streaming API (processes JSON event by event without full memory load)."
+        },
+        {
+          "id": 102,
+          "question": "When would you prefer the JSON-P Streaming API over the Object Model API?",
+          "options": [
+            "A) When you need to modify multiple parts of the JSON document randomly",
+            "B) When working with very large JSON documents where loading the full structure into memory is not ideal",
+            "C) When you need JSON Patch support",
+            "D) When the JSON document is less than 1 KB"
+          ],
+          "answer": "B",
+          "explanation": "The Streaming API processes JSON on the fly without storing the entire structure in memory, making it suitable for large documents where only sequential access is needed."
+        },
+        {
+          "id": 103,
+          "question": "What is Jakarta JSON Binding (JSON-B) used for?",
+          "options": [
+            "A) Validating JSON against a schema",
+            "B) Automatically serializing Java objects to JSON and deserializing JSON back to Java objects",
+            "C) Transforming JSON into XML",
+            "D) Streaming large JSON files from disk"
+          ],
+          "answer": "B",
+          "explanation": "JSON-B defines a standardized API for serializing Java objects to JSON (toJson) and deserializing JSON back to Java objects (fromJson)."
+        },
+        {
+          "id": 104,
+          "question": "In JSON-B, what does @JsonbProperty('person-name') on a field named 'name' do?",
+          "options": [
+            "A) Renames the Java field to 'person-name'",
+            "B) Maps the Java field 'name' to the JSON key 'person-name' during serialization/deserialization",
+            "C) Marks the field as required in the JSON document",
+            "D) Excludes the field from JSON output"
+          ],
+          "answer": "B",
+          "explanation": "@JsonbProperty allows you to specify a custom JSON key name for a Java field, so 'name' in Java becomes 'person-name' in JSON."
+        },
+        {
+          "id": 105,
+          "question": "Which JSON-B annotation excludes a field from serialization entirely?",
+          "options": [
+            "A) @JsonbIgnore",
+            "B) @JsonbTransient",
+            "C) @JsonbExclude",
+            "D) @JsonbSkip"
+          ],
+          "answer": "B",
+          "explanation": "@JsonbTransient marks a field or method to be excluded from JSON serialization and deserialization."
+        },
+        {
+          "id": 106,
+          "question": "What class serves as the entry point for using JSON-B functionality?",
+          "options": [
+            "A) JsonbFactory",
+            "B) JsonbProvider",
+            "C) JsonbBuilder (to create) and the Jsonb interface (to use)",
+            "D) JsonWriter"
+          ],
+          "answer": "C",
+          "explanation": "You create a Jsonb instance via JsonbBuilder.create(), then use the Jsonb interface's toJson() and fromJson() methods for serialization and deserialization."
+        },
+        {
+          "id": 107,
+          "question": "What does JSON Patch (JsonPatch) allow you to do in JSON-P?",
+          "options": [
+            "A) Apply a security patch to the JSON-P library",
+            "B) Perform targeted operations (add, remove, replace, move, copy) on specific parts of a JSON document",
+            "C) Convert a JSON document to an XML document",
+            "D) Compress a JSON document to reduce its size"
+          ],
+          "answer": "B",
+          "explanation": "JsonPatch supports add, remove, replace, move, and copy operations on specific parts of a JSON document without having to replace the whole structure."
+        },
+        {
+          "id": 108,
+          "code": true,
+          "question": "What does this JSON-B code produce?\n\npublic class Dog {\n  public String name;\n  public int age;\n  public boolean bitable;\n}\n\nDog d = new Dog();\nd.name = \"Falco\";\nd.age = 4;\nd.bitable = false;\n\nJsonb jsonb = JsonbBuilder.create();\nString result = jsonb.toJson(d);",
+          "options": [
+            "A) {\"Dog\":{\"name\":\"Falco\",\"age\":4,\"bitable\":false}}",
+            "B) {\"name\":\"Falco\",\"age\":4,\"bitable\":false}",
+            "C) [\"Falco\", 4, false]",
+            "D) name=Falco&age=4&bitable=false"
+          ],
+          "answer": "B",
+          "explanation": "JSON-B's default mapping serializes the public fields directly to a flat JSON object using field names as keys. The class name is not included as a wrapping key."
+        },
+        {
+          "id": 183,
+          "code": true,
+          "question": "Given this JSON-B annotated class, what will jsonb.toJson(person) produce?\n\npublic class Person {\n  private int id = 1;\n  @JsonbProperty(\"person-name\")\n  private String name = \"Jhon\";\n  @JsonbTransient\n  private int age = 20;\n  @JsonbDateFormat(\"dd-MM-yyyy\")\n  private LocalDate registeredDate = LocalDate.of(2019, 9, 7);\n}",
+          "options": [
+            "A) {\"id\":1,\"name\":\"Jhon\",\"age\":20,\"registeredDate\":\"2019-09-07\"}",
+            "B) {\"id\":1,\"person-name\":\"Jhon\",\"registeredDate\":\"07-09-2019\"}",
+            "C) {\"id\":1,\"person-name\":\"Jhon\",\"age\":20,\"registeredDate\":\"07-09-2019\"}",
+            "D) {\"Person\":{\"id\":1,\"name\":\"Jhon\",\"registeredDate\":\"07-09-2019\"}}"
+          ],
+          "answer": "B",
+          "explanation": "@JsonbProperty renames 'name' to 'person-name'. @JsonbTransient excludes 'age' entirely. @JsonbDateFormat('dd-MM-yyyy') formats the date as '07-09-2019'. The result has no 'age' field and uses the custom name and date format."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta XML Web Services (JAX-WS) & SOAP",
+      "questions": [
+        {
+          "id": 109,
+          "question": "What does SOAP stand for and what is it?",
+          "options": [
+            "A) Scalable Object Access Protocol \u2014 a binary messaging format",
+            "B) Simple Object Access Protocol \u2014 a platform-independent XML-based messaging protocol",
+            "C) Secure Object Authentication Protocol \u2014 an HTTP authentication standard",
+            "D) Structured Object API Protocol \u2014 a REST-based standard"
+          ],
+          "answer": "B",
+          "explanation": "SOAP (Simple Object Access Protocol) is a platform-independent communication protocol that structures messages exchanged between applications in XML."
+        },
+        {
+          "id": 110,
+          "question": "What does WSDL stand for and what is it used for?",
+          "options": [
+            "A) Web Service Data Language \u2014 used to store web service configuration",
+            "B) Web Service Description Language \u2014 an XML language used to define the interface provided by a SOAP web service",
+            "C) Wide Service Distribution Layer \u2014 a load balancing protocol",
+            "D) Web Socket Definition Language \u2014 used to configure WebSocket endpoints"
+          ],
+          "answer": "B",
+          "explanation": "WSDL (Web Service Description Language) is an independent XML language used to define a web service's interface: message types, operations, protocols, ports, and service location."
+        },
+        {
+          "id": 111,
+          "question": "When would you choose SOAP/JAX-WS over REST/JAX-RS?",
+          "options": [
+            "A) When building a simple mobile app API that needs to be fast and lightweight",
+            "B) In enterprise environments where advanced security, reliability, and formal contracts are critical (e.g., financial services)",
+            "C) When the client is a web browser making Ajax calls",
+            "D) When you want to expose a public API with minimal documentation"
+          ],
+          "answer": "B",
+          "explanation": "SOAP is traditionally used in enterprise environments where security and advanced features are crucial, such as web services in financial applications."
+        },
+        {
+          "id": 112,
+          "question": "In the 'bottom-up' approach to SOAP web service development, what do you start with?",
+          "options": [
+            "A) The WSDL contract defining operations and messages",
+            "B) The Java class or EJB, and the WSDL is generated from it",
+            "C) A database schema that gets mapped to a web service",
+            "D) An OpenAPI specification file"
+          ],
+          "answer": "B",
+          "explanation": "In the bottom-up (code first) approach, you start with the Java class annotated with @WebService, and the WSDL is generated automatically from the code."
+        },
+        {
+          "id": 113,
+          "question": "In a WSDL document, what does the 'portType' element define?",
+          "options": [
+            "A) The network port number the service listens on",
+            "B) The abstract interface of the web service \u2014 the set of operations it supports",
+            "C) The data format (JSON or XML) used by the service",
+            "D) The endpoint URL where the service can be reached"
+          ],
+          "answer": "B",
+          "explanation": "portType is the abstract interface that defines the operations (with their input, output, and fault messages). It is bound to a concrete protocol by the 'binding' element."
+        },
+        {
+          "id": 114,
+          "question": "Which library does JAX-WS work with to map Java objects to and from XML used in SOAP messages?",
+          "options": [
+            "A) JSON-B",
+            "B) JSON-P",
+            "C) Jakarta XML Binding (JAXB)",
+            "D) Jakarta Persistence (JPA)"
+          ],
+          "answer": "C",
+          "explanation": "JAX-WS works together with Jakarta XML Binding (JAXB) to handle the mapping between Java objects and the XML found in SOAP messages."
+        },
+        {
+          "id": 115,
+          "code": true,
+          "question": "What does the @WebMethod annotation do here, and what will happen to the 'add' method in the generated WSDL?\n\n@WebService\npublic class CalculatorService {\n  @WebMethod\n  public int add(int a, int b) {\n    return a + b;\n  }\n}",
+          "options": [
+            "A) @WebMethod makes the method private so it cannot be called externally",
+            "B) @WebService exposes the class as a SOAP endpoint; @WebMethod marks 'add' as a web service operation \u2014 it will appear as an operation in the generated WSDL",
+            "C) @WebMethod generates a REST endpoint for the 'add' method",
+            "D) Without @WebMethod, the method would be exposed; with it, the method is excluded from the WSDL"
+          ],
+          "answer": "B",
+          "explanation": "@WebService exposes the class as a SOAP web service endpoint. @WebMethod explicitly marks the 'add' method as a web service operation, which will appear in the generated WSDL's portType as an operation."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Messaging (JMS)",
+      "questions": [
+        {
+          "id": 116,
+          "question": "What is the main purpose of Jakarta Messaging (JMS)?",
+          "options": [
+            "A) To provide a standard way for Java applications to exchange messages asynchronously in a distributed environment",
+            "B) To send emails from a Jakarta EE application",
+            "C) To synchronously call remote EJBs via RMI",
+            "D) To stream video content between servers"
+          ],
+          "answer": "A",
+          "explanation": "JMS provides a standard API for creating, sending, receiving, and reading messages in a distributed computing environment, enabling loosely coupled, asynchronous communication."
+        },
+        {
+          "id": 117,
+          "question": "In the Point-to-Point (P2P) messaging model, a message is sent from a producer to:",
+          "options": [
+            "A) All subscribers registered on a topic",
+            "B) A single specific consumer via a queue",
+            "C) Multiple consumers simultaneously",
+            "D) The application server admin console"
+          ],
+          "answer": "B",
+          "explanation": "In the P2P model, messages are sent from a producer to a specific consumer via a queue (one-to-one delivery)."
+        },
+        {
+          "id": 118,
+          "question": "In the Publish/Subscribe messaging model, when a publisher sends a message to a topic, who receives it?",
+          "options": [
+            "A) Only the first consumer that polls the topic",
+            "B) All subscribers currently registered on that topic",
+            "C) The message is stored in a queue until exactly one consumer reads it",
+            "D) Only consumers in the same JVM"
+          ],
+          "answer": "B",
+          "explanation": "In the Publish/Subscribe model, a message published to a topic is delivered to all subscribers registered on that topic."
+        },
+        {
+          "id": 119,
+          "question": "What type of EJB is used to consume JMS messages asynchronously?",
+          "options": [
+            "A) Stateless Session Bean",
+            "B) Stateful Session Bean",
+            "C) Message-Driven Bean (MDB)",
+            "D) Singleton EJB"
+          ],
+          "answer": "C",
+          "explanation": "Message-Driven Beans (MDBs) are the EJB type designed to consume JMS messages asynchronously. They implement MessageListener and are activated when a message arrives."
+        },
+        {
+          "id": 120,
+          "question": "What interface must a Message-Driven Bean (MDB) implement to receive JMS messages?",
+          "options": [
+            "A) jakarta.jms.MessageHandler",
+            "B) jakarta.jms.MessageListener",
+            "C) jakarta.ejb.MessageReceiver",
+            "D) jakarta.messaging.Consumer"
+          ],
+          "answer": "B",
+          "explanation": "An MDB must implement jakarta.jms.MessageListener, which defines the onMessage(Message) method called by the container when a message arrives."
+        },
+        {
+          "id": 121,
+          "question": "In the JMS tutorial example, what does the @JMSDestinationDefinition annotation do?",
+          "options": [
+            "A) It sends a test message to the queue at startup",
+            "B) It declares the JMS destination (queue or topic) as a resource, creating it if it does not exist",
+            "C) It injects the JMSContext into the class",
+            "D) It defines the number of consumers allowed on the queue"
+          ],
+          "answer": "B",
+          "explanation": "@JMSDestinationDefinition declares the JMS destination as a resource. If the queue/topic doesn't exist, the application server creates it at deployment time."
+        },
+        {
+          "id": 122,
+          "question": "In the JMS exercise, what class is responsible for sending messages to the queue?",
+          "options": [
+            "A) MessageConsumer (the MDB)",
+            "B) TestServlet directly using JMSContext",
+            "C) MessageProducer (a Stateless EJB) injected into TestServlet",
+            "D) The Payara admin console"
+          ],
+          "answer": "C",
+          "explanation": "MessageProducer is a @Stateless EJB injected (via @EJB) into TestServlet. Its sendMessage() method uses the injected JMSContext and Queue to send a text message."
+        },
+        {
+          "id": 123,
+          "question": "What does JMS Message Selectors allow you to do?",
+          "options": [
+            "A) Select which JMS provider to use at runtime",
+            "B) Filter messages based on specific header/property criteria so only matching messages are delivered to a consumer",
+            "C) Choose the serialization format (JSON or XML) for messages",
+            "D) Select a subset of subscribers to receive a published message"
+          ],
+          "answer": "B",
+          "explanation": "JMS message selectors allow consumers to filter messages based on specific criteria (message headers/properties), helping route messages to appropriate consumers."
+        },
+        {
+          "id": 124,
+          "question": "Which of the following is NOT a JMS message type?",
+          "options": [
+            "A) TextMessage",
+            "B) ObjectMessage",
+            "C) BinaryMessage",
+            "D) BytesMessage"
+          ],
+          "answer": "C",
+          "explanation": "JMS supports TextMessage, ObjectMessage, BytesMessage, MapMessage, and StreamMessage. 'BinaryMessage' is not a JMS message type \u2014 binary data uses BytesMessage."
+        },
+        {
+          "id": 125,
+          "question": "What is the role of a JMS Connection Factory?",
+          "options": [
+            "A) It stores all messages until a consumer is available",
+            "B) It creates JMS connections between a JMS client and the messaging provider",
+            "C) It transforms JMS messages into REST calls",
+            "D) It routes messages between different queues"
+          ],
+          "answer": "B",
+          "explanation": "A Connection Factory is a JMS component that creates JMS Connections, which provide the communication link between a JMS client and the messaging provider."
+        },
+        {
+          "id": 126,
+          "code": true,
+          "question": "What does this MDB code do when a message arrives on the simpleQ queue?\n\n@MessageDriven(activationConfig = {\n  @ActivationConfigProperty(\n    propertyName = \"destinationLookup\",\n    propertyValue = \"java:global/queue/simpleQ\"),\n  @ActivationConfigProperty(\n    propertyName = \"destinationType\",\n    propertyValue = \"jakarta.jms.Queue\")\n})\npublic class MessageConsumer implements MessageListener {\n  @Override\n  public void onMessage(Message message) {\n    try {\n      logger.info(\"Message received: \" +\n        message.getBody(String.class));\n    } catch (JMSException ex) { ... }\n  }\n}",
+          "options": [
+            "A) It sends a new text message to simpleQ every time it is called",
+            "B) It listens on the simpleQ queue and, whenever a message arrives, logs its text content via onMessage()",
+            "C) It creates the simpleQ queue on the server if it does not exist",
+            "D) It polls the simpleQ queue every 5 seconds looking for messages"
+          ],
+          "answer": "B",
+          "explanation": "@MessageDriven with activationConfig binds this MDB to the simpleQ queue. The container calls onMessage() automatically whenever a message is available. The body is read as a String and logged."
+        },
+        {
+          "id": 127,
+          "code": true,
+          "question": "In TestServlet, a URL is called with ?message=Hi! \u2014 what happens step by step?\n\n@EJB\nprivate MessageProducer producer;\n\nprotected void doGet(HttpServletRequest request,\n    HttpServletResponse response) ... {\n  String message = ofNullable(\n    request.getParameter(\"message\")).orElse(\"Hello JMS!\");\n  producer.sendMessage(message);\n  try (PrintWriter out = response.getWriter()) {\n    out.println(\"Message sent! \" + new Date());\n  }\n}",
+          "options": [
+            "A) The servlet reads 'Hi!' from the URL, calls producer.sendMessage('Hi!') to put it in the JMS queue, then responds with 'Message sent!' and the current date",
+            "B) The servlet ignores the URL parameter and always sends 'Hello JMS!'",
+            "C) The servlet puts 'Hi!' directly in the response body without going through JMS",
+            "D) The servlet throws an exception because 'message' is not a valid HTTP header"
+          ],
+          "answer": "A",
+          "explanation": "ofNullable(...).orElse('Hello JMS!') reads the 'message' query param (here 'Hi!') or defaults to 'Hello JMS!'. producer.sendMessage() dispatches it to the JMS queue via the injected EJB. The response confirms the send."
+        },
+        {
+          "id": 184,
+          "code": true,
+          "question": "In the JMS producer, how is the message actually sent to the queue?\n\n@Stateless @LocalBean\npublic class MessageProducer {\n  @Inject\n  JMSContext context;\n\n  @Resource(lookup = \"java:global/queue/simpleQ\")\n  Queue queue;\n\n  public void sendMessage(String msg) {\n    context.createProducer().send(queue, msg);\n  }\n}",
+          "options": [
+            "A) @Inject JMSContext creates a direct socket connection to the queue; send() writes bytes over it",
+            "B) context.createProducer() creates a JMS MessageProducer; .send(queue, msg) sends the String as a TextMessage to the simpleQ queue via the injected JMSContext",
+            "C) @Resource injects the message itself; send() just logs it",
+            "D) JMSContext is a CDI scope \u2014 it injects a scoped proxy that batches messages"
+          ],
+          "answer": "B",
+          "explanation": "JMSContext is a simplified API (JMS 2.0+) that combines Connection and Session. createProducer() builds a fluent producer and .send(queue, msg) dispatches the String as a JMS TextMessage to the specified queue destination."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Batch",
+      "questions": [
+        {
+          "id": 128,
+          "question": "What is Jakarta Batch designed for?",
+          "options": [
+            "A) Handling real-time HTTP requests from web browsers",
+            "B) Developing, deploying, and running batch processing applications (e.g., processing large volumes of data in bulk)",
+            "C) Sending messages between microservices asynchronously",
+            "D) Managing WebSocket connections"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta Batch is a standard for batch processing \u2014 running bulk data processing jobs \u2014 within and outside of the Jakarta EE Platform."
+        },
+        {
+          "id": 129,
+          "question": "What language does Jakarta Batch use to define the structure and behavior of a batch job?",
+          "options": [
+            "A) JSON (JavaScript Object Notation)",
+            "B) YAML",
+            "C) JSL (Job Specification Language) \u2014 an XML-based language",
+            "D) Java annotations only"
+          ],
+          "answer": "C",
+          "explanation": "Jakarta Batch uses JSL (Job Specification Language), an XML language, to define the structure and behavior of batch jobs."
+        },
+        {
+          "id": 130,
+          "question": "In Jakarta Batch, what is a 'Chunk step'?",
+          "options": [
+            "A) An atomic task that runs once and returns an exit status",
+            "B) A repeating operation over a set of items: read from a source, process, and write to a destination",
+            "C) A parallel flow of independent steps",
+            "D) A decision point that determines the next step to execute"
+          ],
+          "answer": "B",
+          "explanation": "A Chunk step repeatedly reads items (ItemReader), processes them (ItemProcessor), and writes them (ItemWriter) \u2014 defining where items come from, how to process them, and where to send them."
+        },
+        {
+          "id": 131,
+          "question": "What is a 'Batchlet step' in Jakarta Batch?",
+          "options": [
+            "A) A step that processes data in chunks of configurable size",
+            "B) An atomic task that is invoked once, runs to completion, and returns an exit status",
+            "C) A step that runs in parallel with other steps",
+            "D) A listener that monitors batch job events"
+          ],
+          "answer": "B",
+          "explanation": "A Batchlet step defines an atomic task: invoked once, runs to completion, and returns an exit status. It implements the Batchlet interface."
+        },
+        {
+          "id": 132,
+          "question": "What is the purpose of 'checkpoints' in Jakarta Batch?",
+          "options": [
+            "A) To pause the job for human review at specific intervals",
+            "B) To allow the batch runtime to save the current execution state, providing fault tolerance and restart capability",
+            "C) To validate input data at specific points in the job",
+            "D) To mark the end of a transaction in a chunk step"
+          ],
+          "answer": "B",
+          "explanation": "Checkpoints allow the batch runtime to save the current state of a batch job's execution, providing fault tolerance \u2014 if a job fails, it can be restarted from the last checkpoint."
+        },
+        {
+          "id": 133,
+          "question": "How do you start a batch job programmatically in Jakarta Batch?",
+          "options": [
+            "A) By calling Job.start() from any CDI bean",
+            "B) By obtaining a JobOperator instance from BatchRuntime and calling its start() method",
+            "C) By deploying a special .batch archive to the application server",
+            "D) By annotating a method with @BatchStart"
+          ],
+          "answer": "B",
+          "explanation": "To manage jobs, you get a JobOperator from BatchRuntime. The JobOperator provides start(), stop(), and restart() methods to control job execution."
+        },
+        {
+          "id": 134,
+          "question": "What is the purpose of the JSL 'split' element in Jakarta Batch?",
+          "options": [
+            "A) To split a large data file into smaller chunks for processing",
+            "B) To execute multiple flows in parallel",
+            "C) To split the batch job into separate deployment artifacts",
+            "D) To divide a step into multiple threads automatically"
+          ],
+          "answer": "B",
+          "explanation": "The JSL 'split' element allows multiple flows (groups of steps) to execute in parallel, improving throughput for independent processing tasks."
+        },
+        {
+          "id": 135,
+          "question": "In Jakarta Batch, what does the JobRepository store?",
+          "options": [
+            "A) The JSL XML files for all deployed jobs",
+            "B) The running information of jobs \u2014 their state, execution history, and completion results",
+            "C) The data items being processed by the current chunk step",
+            "D) The configuration properties for the batch runtime"
+          ],
+          "answer": "B",
+          "explanation": "The JobRepository stores running information about jobs: their state, execution details, and completion results, enabling monitoring and restart capabilities."
+        },
+        {
+          "id": 136,
+          "code": true,
+          "question": "In a Jakarta Batch Chunk step, three CDI beans are referenced. What is the role of each?\n\nItemReader  \u2192 reads items from a source\nItemProcessor \u2192 transforms/filters each item\nItemWriter  \u2192 writes processed items to a destination\n\nIf you are importing a CSV file into a database, which mapping is correct?",
+          "options": [
+            "A) ItemReader reads from the database; ItemProcessor validates rows; ItemWriter writes to the CSV",
+            "B) ItemReader reads lines from the CSV file; ItemProcessor transforms/validates each row; ItemWriter inserts processed records into the database",
+            "C) ItemReader reads from the database; ItemWriter writes to the database; ItemProcessor handles CSV parsing",
+            "D) All three beans do the same thing \u2014 they are interchangeable"
+          ],
+          "answer": "B",
+          "explanation": "In a CSV-to-database import: ItemReader reads CSV lines, ItemProcessor validates/transforms them into domain objects, and ItemWriter bulk-inserts them into the database \u2014 this matches the chunk step's read-process-write pattern."
+        },
+        {
+          "id": 185,
+          "code": true,
+          "question": "A batch job needs to be started programmatically. What is wrong with this code?\n\nJobOperator operator = BatchRuntime.getJobOperator();\nlong executionId = operator.start(\"myJob\", new Properties());\n\n// Later, to check status:\nJobExecution exec = operator.getJobExecution(executionId);\nSystem.out.println(exec.getBatchStatus());",
+          "options": [
+            "A) Nothing is wrong \u2014 this is the correct way to start and monitor a batch job",
+            "B) BatchRuntime.getJobOperator() is not a valid method \u2014 you must use @Inject JobOperator",
+            "C) operator.start() requires the full file path to the JSL XML, not just the job name",
+            "D) getJobExecution() can only be called after the job finishes"
+          ],
+          "answer": "A",
+          "explanation": "This is correct Jakarta Batch usage: BatchRuntime.getJobOperator() retrieves the JobOperator, start('myJob', props) launches the job defined in META-INF/batch-jobs/myJob.xml and returns an execution ID, and getJobExecution(id) lets you poll the batch status."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta WebSocket",
+      "questions": [
+        {
+          "id": 137,
+          "question": "What is the key difference between WebSocket and traditional HTTP communication?",
+          "options": [
+            "A) WebSocket only works over HTTPS, while HTTP works over plain TCP",
+            "B) WebSocket provides full-duplex (bidirectional) communication over a single long-lived TCP connection, unlike HTTP's request-response model",
+            "C) HTTP supports server push while WebSocket does not",
+            "D) WebSocket is only for binary data, not text"
+          ],
+          "answer": "B",
+          "explanation": "WebSocket provides full-duplex (bidirectional) communication over a single, long-lived TCP connection, making it ideal for real-time applications \u2014 unlike traditional HTTP which is request-response only."
+        },
+        {
+          "id": 138,
+          "question": "Which annotation marks a Java class as a server-side WebSocket endpoint?",
+          "options": [
+            "A) @WebSocketServer",
+            "B) @ServerEndpoint",
+            "C) @WebEndpoint",
+            "D) @SocketHandler"
+          ],
+          "answer": "B",
+          "explanation": "@ServerEndpoint is the annotation used to mark a Java class as a server-side WebSocket endpoint in Jakarta WebSocket."
+        },
+        {
+          "id": 139,
+          "question": "What does the @OnMessage annotation do in a WebSocket endpoint?",
+          "options": [
+            "A) Marks a method to be called when the WebSocket connection is opened",
+            "B) Marks a method to be called when a message is received from the client",
+            "C) Marks a method to be called when the connection is closed",
+            "D) Marks a method to handle connection errors"
+          ],
+          "answer": "B",
+          "explanation": "@OnMessage marks the method to be invoked whenever a message is received on the WebSocket connection."
+        },
+        {
+          "id": 140,
+          "question": "Which annotation handles the event when a WebSocket connection is first established?",
+          "options": [
+            "A) @OnMessage",
+            "B) @OnClose",
+            "C) @OnOpen",
+            "D) @OnConnect"
+          ],
+          "answer": "C",
+          "explanation": "@OnOpen marks the method to be called when a new WebSocket connection is opened (established) between client and server."
+        },
+        {
+          "id": 141,
+          "question": "What makes WebSocket well-suited for real-time applications like chat or live dashboards?",
+          "options": [
+            "A) WebSocket requests are faster because they skip the TCP handshake",
+            "B) Both client and server can send messages at any time over the same persistent connection without the overhead of repeated HTTP request-response cycles",
+            "C) WebSocket compresses data automatically, reducing bandwidth usage",
+            "D) WebSocket uses UDP instead of TCP, making it faster for real-time data"
+          ],
+          "answer": "B",
+          "explanation": "The full-duplex, persistent nature of WebSocket means either side can push data at any time \u2014 ideal for real-time use cases where polling or repeated HTTP requests would be inefficient."
+        },
+        {
+          "id": 142,
+          "code": true,
+          "question": "What lifecycle events does this WebSocket endpoint class handle, and what does each annotated method do?\n\n@ServerEndpoint(\"/chat\")\npublic class ChatEndpoint {\n  @OnOpen\n  public void onOpen(Session session) { ... }\n\n  @OnMessage\n  public void onMessage(String msg, Session session) { ... }\n\n  @OnClose\n  public void onClose(Session session) { ... }\n\n  @OnError\n  public void onError(Throwable t) { ... }\n}",
+          "options": [
+            "A) All four methods handle the same 'message received' event with different data types",
+            "B) onOpen fires when a client connects; onMessage fires when a message arrives; onClose fires when the connection closes; onError fires when an error occurs",
+            "C) onOpen and onClose handle HTTP requests; onMessage and onError handle WebSocket frames",
+            "D) Only @OnMessage is a valid Jakarta WebSocket annotation \u2014 the others are custom"
+          ],
+          "answer": "B",
+          "explanation": "These are the four lifecycle annotations in Jakarta WebSocket: @OnOpen (connection established), @OnMessage (message received), @OnClose (connection closed), @OnError (error occurred). The endpoint is mapped to the /chat URI."
+        }
+      ]
+    },
+    {
+      "category": "Jakarta Security",
+      "questions": [
+        {
+          "id": 143,
+          "question": "What does Jakarta Security's HttpAuthenticationMechanism interface provide?",
+          "options": [
+            "A) A way to encrypt database passwords",
+            "B) A standardized way to implement HTTP authentication mechanisms in web applications",
+            "C) A servlet filter for rate limiting API calls",
+            "D) A token-based session management system"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta Security standardizes authentication in web applications via the HttpAuthenticationMechanism interface, enabling both built-in and custom authentication mechanisms."
+        },
+        {
+          "id": 144,
+          "question": "Which of the following is NOT one of the four built-in HttpAuthenticationMechanism types in Jakarta Security?",
+          "options": [
+            "A) BASIC",
+            "B) FORM",
+            "C) OpenID Connect",
+            "D) OAuth 1.0"
+          ],
+          "answer": "D",
+          "explanation": "The four built-in types are BASIC, FORM, Custom FORM, and OpenID Connect. OAuth 1.0 is not a built-in type (OpenID Connect is built on OAuth 2.0)."
+        },
+        {
+          "id": 145,
+          "question": "What is an Identity Store in Jakarta Security?",
+          "options": [
+            "A) A hardware security module for storing encryption keys",
+            "B) A component responsible for managing and providing access to user identity information (credentials and roles)",
+            "C) A cache that stores authenticated session tokens",
+            "D) A log file that records authentication attempts"
+          ],
+          "answer": "B",
+          "explanation": "Identity Stores implement the IdentityStore interface and are responsible for managing user credentials and roles. They can be backed by a database, LDAP directory, or custom store."
+        },
+        {
+          "id": 146,
+          "question": "What does the SecurityContext interface allow developers to do?",
+          "options": [
+            "A) Configure TLS certificates for the application server",
+            "B) Programmatically obtain information about the authenticated user and check roles or web resource access",
+            "C) Define new authentication mechanisms at runtime",
+            "D) Encrypt/decrypt sensitive data in application code"
+          ],
+          "answer": "B",
+          "explanation": "SecurityContext provides programmatic access to security information: the authenticated user, their roles, and access to particular web resources."
+        },
+        {
+          "id": 147,
+          "question": "OpenID Connect in Jakarta Security is built on top of which protocol?",
+          "options": [
+            "A) SAML 2.0",
+            "B) OAuth 2.0",
+            "C) Kerberos",
+            "D) LDAP"
+          ],
+          "answer": "B",
+          "explanation": "OpenID Connect is built on top of OAuth 2.0, allowing applications to verify users' identities and obtain profile information. It introduces the JWT ID Token containing user identity information."
+        },
+        {
+          "id": 148,
+          "question": "What is a JWT (JSON Web Token) in the context of OpenID Connect?",
+          "options": [
+            "A) A session cookie stored in the browser",
+            "B) A cryptographically signed JSON string containing identity information such as the user's name and group memberships",
+            "C) A Base64-encoded database row containing user credentials",
+            "D) An encrypted password stored on the server"
+          ],
+          "answer": "B",
+          "explanation": "A JWT is a compact, cryptographically signed JSON string. In OpenID Connect, the ID Token is a JWT containing user identity information (subject, groups, issuer, expiry, etc.)."
+        },
+        {
+          "id": 149,
+          "question": "What is Keycloak, referenced in the course material?",
+          "options": [
+            "A) A Jakarta EE application server similar to Payara",
+            "B) An open-source Identity and Access Management (IAM) tool used as an OpenID Connect provider",
+            "C) A Jakarta Security annotation for securing REST endpoints",
+            "D) A library for encrypting JPA entity fields"
+          ],
+          "answer": "B",
+          "explanation": "Keycloak is an open-source Identity and Access Management tool that acts as an OpenID Connect / OAuth 2.0 provider. Applications delegate authentication and authorization to Keycloak."
+        },
+        {
+          "id": 150,
+          "question": "In the Jakarta EE Security + Keycloak diagram from the course, what is the role of the Gateway Service?",
+          "options": [
+            "A) It stores user credentials in an LDAP directory",
+            "B) It exposes a REST API with protected endpoints, obtains access tokens from Keycloak, and propagates them to backend services",
+            "C) It is the browser client that initiates the login flow",
+            "D) It is the Keycloak server itself"
+          ],
+          "answer": "B",
+          "explanation": "The Gateway Service is a RESTful service that exposes protected REST endpoints. It uses Jakarta Security with OpenID Connect to authenticate, obtains an access token from Keycloak, and propagates it to System Service calls."
+        },
+        {
+          "id": 151,
+          "code": true,
+          "question": "In the Jakarta Security diagram, what is the flow when an HTTP request arrives at a protected resource?\n\n1. HTTP request arrives\n2. ??? is invoked\n3. Credentials checked against ???\n4. If authenticated, ??? fetches roles\n5. SecurityContext provides access info to the app",
+          "options": [
+            "A) 2: SecurityContext; 3: the database directly; 4: EntityManager",
+            "B) 2: HttpAuthenticationMechanism; 3: Identity Store (credential validation); 4: Identity Store (fetches roles)",
+            "C) 2: IdentityStore; 3: HttpAuthenticationMechanism; 4: SecurityContext",
+            "D) 2: FacesServlet; 3: persistence.xml; 4: CDI container"
+          ],
+          "answer": "B",
+          "explanation": "The flow is: HttpAuthenticationMechanism is invoked \u2192 it validates credentials against the IdentityStore \u2192 if authenticated, it fetches roles from the IdentityStore \u2192 SecurityContext makes this information available programmatically to the application."
+        },
+        {
+          "id": 186,
+          "code": true,
+          "question": "In MicroProfile JWT RBAC, what does this JAX-RS code do, and who can access each endpoint?\n\n@RequestScoped\n@Path(\"/\")\npublic class HelloWorldResource {\n\n  @Inject\n  private JsonWebToken jwtPrincipal;\n\n  @PermitAll @GET @Path(\"hello-everyone\")\n  public String helloEveryOne() {\n    return \"Hello everyone!\";\n  }\n\n  @RolesAllowed({\"admin\", \"user\"})\n  @GET @Path(\"hello-jwt\")\n  public String helloJwt() {\n    return \"Hello \" + jwtPrincipal.getSubject();\n  }\n}",
+          "options": [
+            "A) Both endpoints require a valid JWT; @PermitAll just removes role restrictions",
+            "B) @PermitAll means /hello-everyone is accessible to anyone (no token needed); @RolesAllowed means /hello-jwt requires a valid JWT token where the caller belongs to 'admin' or 'user' group",
+            "C) @RolesAllowed is a CDI qualifier used to select the correct bean implementation",
+            "D) JsonWebToken must be manually parsed \u2014 @Inject does not work for JWT tokens"
+          ],
+          "answer": "B",
+          "explanation": "@PermitAll opens the endpoint to all callers with no authentication required. @RolesAllowed({'admin','user'}) requires a valid, cryptographically signed JWT token whose groups claim contains 'admin' or 'user'. The injected JsonWebToken gives access to token claims like subject."
+        }
+      ]
+    },
+    {
+      "category": "Arquillian (Integration Testing)",
+      "questions": [
+        {
+          "id": 152,
+          "question": "What is Arquillian?",
+          "options": [
+            "A) A build tool similar to Maven for Jakarta EE projects",
+            "B) A container-agnostic integration testing framework for Jakarta EE",
+            "C) A monitoring tool for production application servers",
+            "D) A code generation tool for JPA entities"
+          ],
+          "answer": "B",
+          "explanation": "Arquillian is a container-agnostic integration testing framework for Jakarta EE that minimizes the burden of managing containers and deployments, letting developers focus on writing tests."
+        },
+        {
+          "id": 153,
+          "question": "Which class/API in Arquillian is used to declaratively define the deployment archive for a test?",
+          "options": [
+            "A) TestArchive",
+            "B) DeploymentBuilder",
+            "C) ShrinkWrap",
+            "D) ArtifactFactory"
+          ],
+          "answer": "C",
+          "explanation": "ShrinkWrap is the API used to declaratively define a deployment archive. Static methods annotated with @Deployment return a ShrinkWrap archive for Arquillian to deploy."
+        },
+        {
+          "id": 154,
+          "question": "What is Payara Micro, used in the Arquillian test execution example?",
+          "options": [
+            "A) A JavaScript testing framework",
+            "B) A smaller version of Payara Server designed specifically for microservices and containerized environments",
+            "C) A Maven plugin for running integration tests",
+            "D) A monitoring dashboard for Jakarta EE applications"
+          ],
+          "answer": "B",
+          "explanation": "Payara Micro is a lightweight version of Payara Server, designed specifically for microservices and containerized environments, used in the Arquillian example for embedded testing."
+        },
+        {
+          "id": 155,
+          "question": "In Arquillian, what does 'embedded' execution mode mean?",
+          "options": [
+            "A) The container runs in a separate JVM on a remote server",
+            "B) Arquillian manages the container lifecycle, but it runs in a separate JVM",
+            "C) The container runs inside the same JVM as the test and is managed by Arquillian",
+            "D) Tests are executed inside the web browser"
+          ],
+          "answer": "C",
+          "explanation": "In embedded mode, the container resides in the same JVM as the test execution program and is managed by Arquillian."
+        },
+        {
+          "id": 156,
+          "question": "Which testing frameworks does Arquillian provide test launchers for?",
+          "options": [
+            "A) Mocha and Jasmine",
+            "B) JUnit and TestNG",
+            "C) PyTest and unittest",
+            "D) Cucumber and Selenium"
+          ],
+          "answer": "B",
+          "explanation": "Arquillian supplies test launchers for the two most popular Java testing choices: JUnit and TestNG."
+        },
+        {
+          "id": 157,
+          "question": "How does Arquillian support dependency injection in test classes?",
+          "options": [
+            "A) It does not \u2014 test classes must create all dependencies manually",
+            "B) It enriches test classes by supporting @Inject, @Resource, @EJB, and @PersistenceContext, just like production code",
+            "C) It uses Spring's @Autowired annotation",
+            "D) Only constructor injection is supported"
+          ],
+          "answer": "B",
+          "explanation": "Arquillian enriches tests to support standard Jakarta EE injection: @Inject for CDI, @Resource for resources, @EJB for session beans, and @PersistenceContext for JPA \u2014 making tests feel like production code."
+        },
+        {
+          "id": 158,
+          "question": "What are the Arquillian extensions Drone and Graphene used for?",
+          "options": [
+            "A) Performance and load testing of Jakarta EE applications",
+            "B) Web browser automation testing linked to Selenium WebDriver",
+            "C) Testing JMS message flows",
+            "D) Mocking CDI beans in unit tests"
+          ],
+          "answer": "B",
+          "explanation": "Drone and Graphene are Arquillian extensions linked to Selenium's WebDriver API, enabling automated web browser control for end-to-end testing of web UIs."
+        },
+        {
+          "id": 159,
+          "code": true,
+          "question": "What does the @Deployment annotation and ShrinkWrap do in an Arquillian test?\n\n@ExtendWith(ArquillianExtension.class)\npublic class MyServiceTest {\n\n  @Deployment\n  public static WebArchive createDeployment() {\n    return ShrinkWrap.create(WebArchive.class)\n      .addClass(MyService.class)\n      .addAsWebInfResource(EmptyAsset.INSTANCE, \"beans.xml\");\n  }\n\n  @Inject\n  MyService service;\n\n  @Test\n  public void testSomething() {\n    // test service\n  }\n}",
+          "options": [
+            "A) @Deployment marks the class as a deployable artifact; ShrinkWrap is a build tool that compiles Java code",
+            "B) @Deployment marks a static method that builds the test archive (containing MyService and a beans.xml); Arquillian deploys this archive to the container before running tests, and @Inject works inside the test class",
+            "C) @Deployment tells Arquillian to skip container setup and run tests directly in the JVM",
+            "D) ShrinkWrap replaces Maven and resolves dependencies at test time"
+          ],
+          "answer": "B",
+          "explanation": "@ExtendWith(ArquillianExtension.class) hooks Arquillian into JUnit 5. @Deployment builds the micro-archive (WAR with MyService + beans.xml) that Arquillian deploys to the container. @Inject then works in the test class just as in production code."
+        },
+        {
+          "id": 187,
+          "code": true,
+          "question": "Looking at the Arquillian test execution flow with Payara Micro, what happens for EACH test class?\n\nUnit test class\n  \u2192 for each unit test class:\n    1. Start Payara Micro and deploy archive\n    2. Run test methods\n    3. Stop Payara Micro",
+          "options": [
+            "A) Payara Micro starts once at the beginning and stays running for all test classes",
+            "B) For each test class, Payara Micro starts fresh (deploying the archive), all test methods in that class run inside the container, then Payara Micro stops \u2014 giving each class a clean container environment",
+            "C) Payara Micro runs only the @Deployment method, not the @Test methods",
+            "D) Tests run outside the container; only the @Deployment archive is deployed to Payara Micro"
+          ],
+          "answer": "B",
+          "explanation": "In the embedded Arquillian + Payara Micro setup, the lifecycle is per test class: start container \u2192 deploy \u2192 run all @Test methods \u2192 stop. This ensures test isolation but adds startup overhead per class."
+        }
+      ]
+    },
+    {
+      "category": "Eclipse MicroProfile",
+      "questions": [
+        {
+          "id": 160,
+          "question": "What is Eclipse MicroProfile?",
+          "options": [
+            "A) A lightweight Java IDE for microservices development",
+            "B) A community and open source 'umbrella' specification providing APIs focused on cloud-native application development",
+            "C) A Docker-based deployment framework for Jakarta EE",
+            "D) A monitoring agent for application servers"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile is an umbrella specification from the Eclipse Foundation (started September 2016) providing a set of APIs focused on cloud-native (microservices, cloud) application development."
+        },
+        {
+          "id": 161,
+          "question": "What does MicroProfile Config provide?",
+          "options": [
+            "A) Runtime monitoring of application performance metrics",
+            "B) A flexible and extensible application configuration mechanism supporting system properties, environment variables, and properties files",
+            "C) A way to configure WebSocket endpoints",
+            "D) Automatic generation of REST client stubs"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile Config defines a flexible configuration mechanism. Mandatory sources include system properties, environment variables, and META-INF/microprofile-config.properties files."
+        },
+        {
+          "id": 162,
+          "question": "What are the three types of health checks in MicroProfile Health?",
+          "options": [
+            "A) CPU, Memory, Disk",
+            "B) Readiness, Liveness, Startup",
+            "C) Active, Passive, Scheduled",
+            "D) HTTP, JMX, Log"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile Health defines three health check types: readiness (is the app ready to handle requests?), liveness (is the app alive?), and startup (has the app finished starting?)."
+        },
+        {
+          "id": 163,
+          "question": "What does MicroProfile OpenAPI provide?",
+          "options": [
+            "A) An implementation of the OpenID Connect standard",
+            "B) Java interfaces and programming models to natively produce OpenAPI v3 compliant documents for JAX-RS REST services",
+            "C) A tool to generate JPA entities from an OpenAPI spec",
+            "D) An open-source API gateway for routing requests"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile OpenAPI provides a set of Java interfaces enabling developers to produce OpenAPI v3 compliant documents for their JAX-RS REST services, exposed at the /openapi endpoint."
+        },
+        {
+          "id": 164,
+          "question": "What does MicroProfile Fault Tolerance allow developers to do?",
+          "options": [
+            "A) Automatically fix bugs in production code",
+            "B) Define resilience patterns like timeouts, retries, fallbacks, and circuit breakers on method calls",
+            "C) Monitor and alert on application faults",
+            "D) Roll back database transactions on any exception"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile Fault Tolerance defines annotations like @Timeout, @Retry, @Fallback, and @CircuitBreaker to make microservices resilient to failures."
+        },
+        {
+          "id": 165,
+          "question": "What does MicroProfile JWT RBAC enable?",
+          "options": [
+            "A) JSON-based configuration files for role definitions",
+            "B) Role-based access control for microservice endpoints using OpenID Connect and JSON Web Tokens (JWT)",
+            "C) Automatic generation of JWT tokens from JPA entities",
+            "D) Bidirectional communication using JWT-secured WebSockets"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile JWT RBAC enables role-based securing of microservice endpoints. A caller authenticates using a cryptographically signed JWT token specifying the user and their groups."
+        },
+        {
+          "id": 166,
+          "question": "What does MicroProfile Rest Client provide?",
+          "options": [
+            "A) A server-side REST framework replacing JAX-RS",
+            "B) A typed, annotation-driven approach to calling RESTful services over HTTP",
+            "C) A GraphQL client for microservices",
+            "D) A tool to document REST APIs automatically"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile Rest Client describes a typed approach to calling RESTful services over HTTP, allowing you to define an interface and inject it as a REST client."
+        },
+        {
+          "id": 167,
+          "question": "MicroProfile OpenTelemetry is based on which CNCF project, and what does it primarily help with?",
+          "options": [
+            "A) Prometheus \u2014 collecting application metrics",
+            "B) OpenTelemetry \u2014 enabling REST services to participate in distributed tracing, metrics, and logging",
+            "C) Jaeger \u2014 providing a UI for viewing application logs",
+            "D) Grafana \u2014 creating dashboards for application data"
+          ],
+          "answer": "B",
+          "explanation": "MicroProfile OpenTelemetry is based on the CNCF OpenTelemetry project, defining an API enabling REST services to participate in a distributed tracing environment, with data sent to backends like Jaeger or Zipkin."
+        },
+        {
+          "id": 168,
+          "question": "What is a 'cloud-native application'?",
+          "options": [
+            "A) An application that can only run on AWS or Azure",
+            "B) An application specifically designed for cloud environments, leveraging microservices architecture, containers, cloud services, and DevOps practices",
+            "C) Any Java EE application deployed to a cloud server",
+            "D) An application that uses cloud storage instead of a local database"
+          ],
+          "answer": "B",
+          "explanation": "A cloud-native application is designed for cloud environments: it follows microservices architecture, uses containers (Docker/Kubernetes), relies on cloud services, and emphasizes CI/CD and dynamic resource management."
+        },
+        {
+          "id": 169,
+          "question": "Which MicroProfile specification is responsible for exposing application metrics in JSON or Prometheus format via an HTTP endpoint?",
+          "options": [
+            "A) MicroProfile Health",
+            "B) MicroProfile OpenTelemetry",
+            "C) MicroProfile Metrics",
+            "D) MicroProfile OpenAPI"
+          ],
+          "answer": "C",
+          "explanation": "MicroProfile Metrics collects various metrics over the application lifetime and exposes them via REST over HTTP in JSON or Prometheus format \u2014 consumed by tools like Prometheus and displayed in Grafana."
+        },
+        {
+          "id": 170,
+          "question": "What is the key difference between Jakarta EE and Eclipse MicroProfile in terms of application style?",
+          "options": [
+            "A) Jakarta EE is open source; MicroProfile is commercial",
+            "B) Jakarta EE targets traditional monolithic enterprise apps (.war, .ear), while MicroProfile focuses on cloud-native microservices",
+            "C) Jakarta EE only supports SOAP; MicroProfile only supports REST",
+            "D) MicroProfile is a subset of Jakarta EE with the same set of specifications"
+          ],
+          "answer": "B",
+          "explanation": "Jakarta EE targets both monolithic and web-based enterprise applications, while MicroProfile focuses specifically on cloud-native microservices. They share values like standardization and openness, and often complement each other."
+        },
+        {
+          "id": 171,
+          "question": "In MicroProfile Config, how would you retrieve a configuration value programmatically (not via injection)?",
+          "options": [
+            "A) System.getenv(\"my.property\")",
+            "B) Config config = ConfigProvider.getConfig(); String val = config.getValue(\"my.property\", String.class);",
+            "C) Properties p = new Properties(); p.load(...); p.getProperty(\"my.property\");",
+            "D) @ConfigProperty(name=\"my.property\") private String val;"
+          ],
+          "answer": "B",
+          "explanation": "Programmatic access uses ConfigProvider.getConfig() to get a Config instance, then config.getValue() to retrieve a typed value. @ConfigProperty is the injection-based approach."
+        },
+        {
+          "id": 172,
+          "code": true,
+          "question": "This MicroProfile Rest Client interface is used to call an external API. What does @RegisterRestClient and @Inject @RestClient do?\n\n@RegisterRestClient\n@Produces(MediaType.APPLICATION_JSON)\npublic interface SwapiService {\n  @GET\n  @Path(\"/people/{id}\")\n  JsonObject getCharacter(@PathParam(\"id\") String id);\n}\n\n// In another bean:\n@Inject\n@RestClient\nprivate SwapiService swapiService;",
+          "options": [
+            "A) @RegisterRestClient turns SwapiService into a JMS message producer; @RestClient injects a queue",
+            "B) @RegisterRestClient marks the interface so MicroProfile generates a working HTTP client implementation; @Inject @RestClient injects that generated implementation \u2014 calling swapiService.getCharacter('1') makes a real GET HTTP call to the configured URL",
+            "C) @RegisterRestClient creates a mock of SwapiService for testing only",
+            "D) The interface must be a class; interfaces cannot be registered as Rest Clients"
+          ],
+          "answer": "B",
+          "explanation": "@RegisterRestClient tells MicroProfile Rest Client to generate a proxy implementation for this interface. The base URL is configured in microprofile-config.properties. @Inject @RestClient injects the proxy \u2014 method calls on it become real HTTP requests."
+        },
+        {
+          "id": 173,
+          "code": true,
+          "question": "What do the three annotations on this method mean in MicroProfile Fault Tolerance?\n\n@Fallback(fallbackMethod = \"calculateAmountFallback\")\n@Timeout\n@Retry\npublic BigDecimal calculateAmount(\n    TransactionRequest req, Wallet wallet) {\n  // calls an external rate service\n}",
+          "options": [
+            "A) @Timeout logs timing; @Retry logs retries; @Fallback logs failures",
+            "B) @Timeout aborts the call if it takes too long; @Retry automatically retries the call on failure; @Fallback calls calculateAmountFallback() if all retries are exhausted or a timeout occurs",
+            "C) @Retry runs the method in parallel threads; @Timeout stops parallel threads; @Fallback merges results",
+            "D) All three annotations do the same thing \u2014 they are aliases for each other"
+          ],
+          "answer": "B",
+          "explanation": "@Timeout sets a maximum execution time and aborts if exceeded. @Retry retries the method invocation on failure. @Fallback specifies a fallback method (calculateAmountFallback) to call when all retry attempts fail or a non-retryable error occurs \u2014 combining three resilience patterns on a single method."
+        },
+        {
+          "id": 188,
+          "code": true,
+          "question": "This MicroProfile Health class checks available disk space. What will the /health endpoint return if freeSpace <= 100?\n\n@Liveness\n@ApplicationScoped\npublic class DiskSizeCheck implements HealthCheck {\n  @Override\n  public HealthCheckResponse call() {\n    File file = new File(\"/\");\n    long freeSpace = file.getFreeSpace() / 1024 / 1024;\n    return HealthCheckResponse.named(\"disk\")\n      .withData(\"remainingSpace\", freeSpace)\n      .status(freeSpace > 100)\n      .build();\n  }\n}",
+          "options": [
+            "A) The /health endpoint returns HTTP 200 with status 'UP' regardless of disk space",
+            "B) The /health endpoint returns HTTP 503 with status 'DOWN' and the remaining disk space in MB, because status(false) marks the check as DOWN",
+            "C) The method throws an ArithmeticException when freeSpace is 0",
+            "D) @Liveness means this check only runs at application startup"
+          ],
+          "answer": "B",
+          "explanation": ".status(freeSpace > 100) sets status to UP if freeSpace > 100, DOWN otherwise. When DOWN, the /health endpoint returns HTTP 503 Service Unavailable with a JSON body showing status:'DOWN' and the remainingSpace data. @Liveness marks it as a liveness probe (is the app alive?)."
+        }
+      ]
+    }
+  ]
+}

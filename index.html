@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JEE Quiz Helper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-top: #fdf5e6;
+      --bg-bottom: #d9eefb;
+      --ink: #102a43;
+      --ink-soft: #486581;
+      --card: #ffffffdd;
+      --accent: #d64545;
+      --accent-2: #1d7a8c;
+      --ok: #1f7a4d;
+      --bad: #b42318;
+      --line: #bcccdc;
+      --shadow: 0 18px 45px rgba(16, 42, 67, 0.14);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 12% 20%, #fff4dc 0%, transparent 32%),
+                  radial-gradient(circle at 80% 84%, #bee6f8 0%, transparent 30%),
+                  linear-gradient(170deg, var(--bg-top), var(--bg-bottom));
+    }
+
+    body {
+      animation: fadeIn 480ms ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .app {
+      width: min(1100px, 94vw);
+      margin: 28px auto 40px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border: 1px solid #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 26px 24px;
+      background: linear-gradient(118deg, #102a43, #1d7a8c 68%, #3e8fb0);
+      color: #f0f7ff;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -80% auto;
+      width: 340px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff26, #ffffff00 70%);
+      z-index: -1;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+    }
+
+    .description {
+      margin: 0;
+      color: #ddedf8;
+      line-height: 1.45;
+    }
+
+    .controls {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .mode-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 120ms ease, filter 120ms ease;
+      color: #fff;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+    }
+
+    .btn-alt {
+      background: var(--accent-2);
+    }
+
+    .btn-neutral {
+      background: #5b7083;
+    }
+
+    .btn-ghost {
+      color: var(--ink);
+      background: #e6edf3;
+    }
+
+    .hint {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .category-picker {
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fbfe;
+      display: none;
+      gap: 8px;
+    }
+
+    .category-picker.visible {
+      display: grid;
+      animation: riseIn 240ms ease;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category-grid {
+      display: grid;
+      gap: 6px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+    input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--accent-2);
+    }
+
+    .quiz {
+      padding: 20px;
+      display: none;
+      gap: 14px;
+    }
+
+    .quiz.visible {
+      display: grid;
+    }
+
+    .status {
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .question-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .question-category {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: 999px;
+      background: #ecf6f8;
+      color: #165a69;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .question-text {
+      margin: 0;
+      font-size: clamp(1rem, 1.4vw, 1.1rem);
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .question-text.code {
+      font-family: Consolas, "Courier New", monospace;
+      background: #f5f8fb;
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid #d9e2ec;
+      font-size: 0.95rem;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    .option {
+      text-align: left;
+      color: var(--ink);
+      background: #f4f9ff;
+      border: 1px solid #d5e3ef;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 500;
+    }
+
+    .option.selected {
+      border-color: #1b6f8f;
+      background: #e3f2fa;
+      box-shadow: inset 0 0 0 1px #2b8eb3;
+    }
+
+    .option.correct {
+      border-color: #8fd6af;
+      background: #e6f9ee;
+      color: #0f5132;
+    }
+
+    .option.incorrect {
+      border-color: #f5b5ac;
+      background: #fff0ee;
+      color: #7a271a;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .score {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 14px;
+      line-height: 1.5;
+    }
+
+    .score.visible {
+      display: block;
+    }
+
+    .score h3 {
+      margin: 0 0 8px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+    }
+
+    .small {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .error {
+      color: var(--bad);
+      background: #fff4f3;
+      border: 1px solid #ffd4ce;
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+    }
+
+    .error.visible {
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .app {
+        width: min(100%, 96vw);
+        margin-top: 14px;
+      }
+
+      .hero,
+      .controls,
+      .quiz {
+        padding: 14px;
+      }
+
+      .mode-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .mode-row button {
+        width: 100%;
+      }
+
+      .nav {
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="panel hero">
+      <h1 id="quizTitle">Loading quiz...</h1>
+      <p id="quizDescription" class="description">Please wait while questions are loaded from questions.json.</p>
+    </section>
+
+    <section class="panel controls">
+      <div class="mode-row">
+        <button class="btn-accent" id="startBalancedBtn" type="button">Balanced Random 20</button>
+        <button class="btn-alt" id="startAllBtn" type="button">Entire Material</button>
+        <button class="btn-neutral" id="toggleCategoryBtn" type="button">Select Categories</button>
+      </div>
+
+      <p class="hint">Balanced Random 20 keeps the set semi-random while ensuring coverage across categories.</p>
+
+      <div class="category-picker" id="categoryPicker">
+        <div class="mode-row">
+          <button class="btn-ghost" id="selectAllCategoriesBtn" type="button">Select All</button>
+          <button class="btn-ghost" id="clearAllCategoriesBtn" type="button">Clear All</button>
+          <button class="btn-accent" id="startSelectedBtn" type="button">Start Selected Categories</button>
+        </div>
+        <div class="category-grid" id="categoryList"></div>
+      </div>
+
+      <p id="errorBox" class="error"></p>
+    </section>
+
+    <section class="panel quiz" id="quizPanel">
+      <div class="status" id="statusLine"></div>
+
+      <article class="question-card">
+        <span class="question-category" id="categoryBadge"></span>
+        <h2 class="question-text" id="questionText"></h2>
+        <div class="options" id="optionsList"></div>
+      </article>
+
+      <div class="nav">
+        <div class="mode-row">
+          <button class="btn-ghost" id="prevBtn" type="button">Previous</button>
+          <button class="btn-ghost" id="nextBtn" type="button">Next</button>
+        </div>
+        <div class="mode-row">
+          <button class="btn-alt" id="finishBtn" type="button">Finish & Score</button>
+          <button class="btn-neutral" id="restartBtn" type="button">Restart Set</button>
+        </div>
+      </div>
+
+      <section class="score" id="scoreBox"></section>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      title: "",
+      description: "",
+      categories: [],
+      questions: [],
+      activeQuestions: [],
+      userAnswers: {},
+      currentIndex: 0,
+      completed: false
+    };
+
+    const el = {
+      quizTitle: document.getElementById("quizTitle"),
+      quizDescription: document.getElementById("quizDescription"),
+      categoryList: document.getElementById("categoryList"),
+      categoryPicker: document.getElementById("categoryPicker"),
+      toggleCategoryBtn: document.getElementById("toggleCategoryBtn"),
+      startBalancedBtn: document.getElementById("startBalancedBtn"),
+      startAllBtn: document.getElementById("startAllBtn"),
+      startSelectedBtn: document.getElementById("startSelectedBtn"),
+      selectAllCategoriesBtn: document.getElementById("selectAllCategoriesBtn"),
+      clearAllCategoriesBtn: document.getElementById("clearAllCategoriesBtn"),
+      errorBox: document.getElementById("errorBox"),
+      quizPanel: document.getElementById("quizPanel"),
+      statusLine: document.getElementById("statusLine"),
+      categoryBadge: document.getElementById("categoryBadge"),
+      questionText: document.getElementById("questionText"),
+      optionsList: document.getElementById("optionsList"),
+      prevBtn: document.getElementById("prevBtn"),
+      nextBtn: document.getElementById("nextBtn"),
+      finishBtn: document.getElementById("finishBtn"),
+      restartBtn: document.getElementById("restartBtn"),
+      scoreBox: document.getElementById("scoreBox")
+    };
+
+    function showError(message) {
+      el.errorBox.textContent = message;
+      el.errorBox.classList.add("visible");
+    }
+
+    function clearError() {
+      el.errorBox.textContent = "";
+      el.errorBox.classList.remove("visible");
+    }
+
+    function flattenQuestions(categories) {
+      return categories.flatMap((categoryObj) =>
+        categoryObj.questions.map((q) => ({
+          ...q,
+          category: categoryObj.category
+        }))
+      );
+    }
+
+    function parseOptionLetter(optionText) {
+      const m = optionText.match(/^\s*([A-Za-z])\)/);
+      return m ? m[1].toUpperCase() : "";
+    }
+
+    function hashString(value) {
+      let h = 2166136261;
+      for (let i = 0; i < value.length; i += 1) {
+        h ^= value.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+      }
+      return h >>> 0;
+    }
+
+    function createSeededRng(seed) {
+      let x = seed || 123456789;
+      return function next() {
+        x += 0x6d2b79f5;
+        let t = x;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function shuffle(items, rng) {
+      const arr = [...items];
+      for (let i = arr.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(rng() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function makeBalancedRandomSet(categories, targetCount = 20) {
+      const nonEmpty = categories.filter((c) => c.questions && c.questions.length > 0);
+      const daySeed = new Date().toISOString().slice(0, 10);
+      const rng = createSeededRng(hashString(daySeed + "|balanced"));
+
+      if (nonEmpty.length === 0) {
+        return [];
+      }
+
+      if (nonEmpty.length > targetCount) {
+        const chosenCategories = shuffle(nonEmpty, rng).slice(0, targetCount);
+        return shuffle(
+          chosenCategories.map((c) => {
+            const pick = shuffle(c.questions, rng)[0];
+            return { ...pick, category: c.category };
+          }),
+          rng
+        );
+      }
+
+      let minPerCategory = nonEmpty.length <= 10 ? 2 : 1;
+      if (minPerCategory * nonEmpty.length > targetCount) {
+        minPerCategory = 1;
+      }
+
+      const selected = [];
+      const leftovers = [];
+
+      for (const categoryObj of nonEmpty) {
+        const shuffled = shuffle(categoryObj.questions, rng);
+        const guaranteed = shuffled.slice(0, Math.min(minPerCategory, shuffled.length));
+        const rest = shuffled.slice(guaranteed.length);
+
+        guaranteed.forEach((q) => selected.push({ ...q, category: categoryObj.category }));
+        rest.forEach((q) => leftovers.push({ ...q, category: categoryObj.category }));
+      }
+
+      const remainingSlots = Math.max(0, targetCount - selected.length);
+      const extra = shuffle(leftovers, rng).slice(0, remainingSlots);
+      return shuffle([...selected, ...extra], rng);
+    }
+
+    function buildSelectedCategorySet(selectedCategoryNames) {
+      const selectedSet = new Set(selectedCategoryNames);
+      return state.questions.filter((q) => selectedSet.has(q.category));
+    }
+
+    function resetQuiz(questions) {
+      state.activeQuestions = questions;
+      state.userAnswers = {};
+      state.currentIndex = 0;
+      state.completed = false;
+      el.scoreBox.classList.remove("visible");
+      el.scoreBox.innerHTML = "";
+      el.quizPanel.classList.add("visible");
+      renderQuestion();
+    }
+
+    function renderCategories() {
+      el.categoryList.innerHTML = "";
+      state.categories.forEach((categoryObj, index) => {
+        const id = `cat-${index}`;
+
+        const wrapper = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = id;
+        checkbox.value = categoryObj.category;
+
+        const text = document.createElement("span");
+        text.textContent = `${categoryObj.category} (${categoryObj.questions.length})`;
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(text);
+        el.categoryList.appendChild(wrapper);
+      });
+    }
+
+    function getSelectedCategories() {
+      const checkboxes = el.categoryList.querySelectorAll("input[type='checkbox']");
+      return Array.from(checkboxes)
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.value);
+    }
+
+    function renderQuestion() {
+      if (state.activeQuestions.length === 0) {
+        showError("No questions available for this mode.");
+        return;
+      }
+
+      clearError();
+      const total = state.activeQuestions.length;
+      const idx = state.currentIndex;
+      const q = state.activeQuestions[idx];
+
+      el.statusLine.textContent = `Question ${idx + 1}/${total} | Answered ${Object.keys(state.userAnswers).length}/${total}`;
+      el.categoryBadge.textContent = q.category;
+      el.questionText.textContent = q.question;
+      el.questionText.classList.toggle("code", Boolean(q.code));
+
+      const selected = state.userAnswers[idx] || "";
+      const correct = (q.answer || "").trim().toUpperCase();
+
+      el.optionsList.innerHTML = "";
+      q.options.forEach((optionText) => {
+        const optionLetter = parseOptionLetter(optionText);
+        const optionBtn = document.createElement("button");
+        optionBtn.type = "button";
+        optionBtn.className = "option";
+        optionBtn.textContent = optionText;
+
+        if (selected && selected === optionLetter) {
+          optionBtn.classList.add("selected");
+        }
+
+        if (state.completed) {
+          if (optionLetter === correct) {
+            optionBtn.classList.add("correct");
+          } else if (selected === optionLetter && selected !== correct) {
+            optionBtn.classList.add("incorrect");
+          }
+        }
+
+        optionBtn.addEventListener("click", () => {
+          if (state.completed) {
+            return;
+          }
+
+          state.userAnswers[idx] = optionLetter;
+          renderQuestion();
+        });
+
+        el.optionsList.appendChild(optionBtn);
+      });
+
+      el.prevBtn.disabled = idx === 0;
+      el.nextBtn.disabled = idx >= total - 1;
+      el.finishBtn.disabled = state.completed;
+    }
+
+    function finishQuiz() {
+      state.completed = true;
+      let correctCount = 0;
+
+      state.activeQuestions.forEach((q, idx) => {
+        const picked = (state.userAnswers[idx] || "").toUpperCase();
+        const answer = (q.answer || "").toUpperCase();
+        if (picked && picked === answer) {
+          correctCount += 1;
+        }
+      });
+
+      const total = state.activeQuestions.length;
+      const attempted = Object.keys(state.userAnswers).length;
+      const percent = total > 0 ? ((correctCount / total) * 100).toFixed(1) : "0.0";
+
+      el.scoreBox.innerHTML = `
+        <h3>Result: ${correctCount}/${total} (${percent}%)</h3>
+        <p><strong>Attempted:</strong> ${attempted}/${total}</p>
+        <p class="small">Correct options are now highlighted in green. Your wrong selections are highlighted in red.</p>
+      `;
+      el.scoreBox.classList.add("visible");
+      renderQuestion();
+    }
+
+    function attachEvents() {
+      el.toggleCategoryBtn.addEventListener("click", () => {
+        el.categoryPicker.classList.toggle("visible");
+      });
+
+      el.startBalancedBtn.addEventListener("click", () => {
+        clearError();
+        const set = makeBalancedRandomSet(state.categories, 20);
+        resetQuiz(set);
+      });
+
+      el.startAllBtn.addEventListener("click", () => {
+        clearError();
+        resetQuiz([...state.questions]);
+      });
+
+      el.startSelectedBtn.addEventListener("click", () => {
+        clearError();
+        const selectedNames = getSelectedCategories();
+        if (selectedNames.length === 0) {
+          showError("Select at least one category first.");
+          return;
+        }
+
+        const selectedQuestions = buildSelectedCategorySet(selectedNames);
+        resetQuiz(selectedQuestions);
+      });
+
+      el.selectAllCategoriesBtn.addEventListener("click", () => {
+        const checkboxes = el.categoryList.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach((cb) => {
+          cb.checked = true;
+        });
+      });
+
+      el.clearAllCategoriesBtn.addEventListener("click", () => {
+        const checkboxes = el.categoryList.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        });
+      });
+
+      el.prevBtn.addEventListener("click", () => {
+        if (state.currentIndex > 0) {
+          state.currentIndex -= 1;
+          renderQuestion();
+        }
+      });
+
+      el.nextBtn.addEventListener("click", () => {
+        if (state.currentIndex < state.activeQuestions.length - 1) {
+          state.currentIndex += 1;
+          renderQuestion();
+        }
+      });
+
+      el.finishBtn.addEventListener("click", finishQuiz);
+
+      el.restartBtn.addEventListener("click", () => {
+        if (state.activeQuestions.length > 0) {
+          const daySeed = new Date().toISOString().slice(0, 10);
+          const rng = createSeededRng(hashString(daySeed + "|restart|" + state.activeQuestions.length));
+          resetQuiz(shuffle(state.activeQuestions, rng));
+        }
+      });
+    }
+
+    async function init() {
+      try {
+        const response = await fetch("./questions.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Could not load questions.json (HTTP ${response.status})`);
+        }
+
+        const data = await response.json();
+
+        state.title = data.title || "JEE Quiz Helper";
+        state.description = data.description || "";
+        state.categories = Array.isArray(data.categories) ? data.categories : [];
+        state.questions = flattenQuestions(state.categories);
+
+        el.quizTitle.textContent = state.title;
+        el.quizDescription.textContent = state.description;
+
+        renderCategories();
+        attachEvents();
+      } catch (err) {
+        showError("Failed to load questions.json. Open this app via a local web server (not file://) so fetch can read JSON.");
+        el.quizTitle.textContent = "JEE Quiz Helper";
+        el.quizDescription.textContent = "Could not initialize quiz data.";
+        console.error(err);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
