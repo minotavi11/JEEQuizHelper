@@ -696,7 +696,7 @@
         el.feedbackBox.className = "feedback";
       }
 
-      if (state.completed) {
+      if (selected || state.completed) {
         const explanation = (q.explanation || "No explanation available for this question.").trim();
         el.explanationBox.textContent = `Explanation: ${explanation}`;
         el.explanationBox.classList.add("visible");
