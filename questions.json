@@ -1,6 +1,6 @@
 {
-  "title": "Jakarta EE (JEE) Course \u2013 Quiz Questions v2",
-  "description": "Multiple-choice questions covering the full JEE course material, grouped by topic. Suitable for beginners with minimal Java experience. Code-based questions are marked with 'code': true. Approximately 1 code question per 4 conceptual questions.",
+  "title": "Jakarta EE (JEE) Course",
+  "description": "Multiple-choice questions covering the full JEE course material, grouped by topic. Suitable for beginners with minimal Java experience. Code-based questions are marked with 'code': true. Approximately 1 code question per 4 conceptual questions. Credit - minotavi11 on GitHub.",
   "categories": [
     {
       "category": "Jakarta EE \u2013 Introduction & Overview",

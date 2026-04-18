@@ -277,6 +277,31 @@
       display: block;
     }
 
+    .feedback {
+      display: none;
+      border-radius: 10px;
+      padding: 10px 12px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .feedback.visible {
+      display: block;
+    }
+
+    .feedback.correct {
+      background: #e6f9ee;
+      color: #0f5132;
+      border: 1px solid #8fd6af;
+    }
+
+    .feedback.incorrect {
+      background: #fff0ee;
+      color: #7a271a;
+      border: 1px solid #f5b5ac;
+    }
+
     .option {
       text-align: left;
       color: var(--ink);
@@ -412,6 +437,7 @@
         <span class="question-category" id="categoryBadge"></span>
         <h2 class="question-text" id="questionText"></h2>
         <div class="options" id="optionsList"></div>
+        <div class="feedback" id="feedbackBox"></div>
         <div class="explanation" id="explanationBox"></div>
       </article>
 
@@ -459,6 +485,7 @@
       categoryBadge: document.getElementById("categoryBadge"),
       questionText: document.getElementById("questionText"),
       optionsList: document.getElementById("optionsList"),
+      feedbackBox: document.getElementById("feedbackBox"),
       explanationBox: document.getElementById("explanationBox"),
       prevBtn: document.getElementById("prevBtn"),
       nextBtn: document.getElementById("nextBtn"),
@@ -623,6 +650,8 @@
 
       const selected = state.userAnswers[idx] || "";
       const correct = (q.answer || "").trim().toUpperCase();
+      const selectedOptionText = q.options.find((optionText) => parseOptionLetter(optionText) === selected) || "";
+      const correctOptionText = q.options.find((optionText) => parseOptionLetter(optionText) === correct) || "";
 
       el.optionsList.innerHTML = "";
       q.options.forEach((optionText) => {
@@ -636,7 +665,7 @@
           optionBtn.classList.add("selected");
         }
 
-        if (state.completed) {
+        if (state.completed || selected) {
           if (optionLetter === correct) {
             optionBtn.classList.add("correct");
           } else if (selected === optionLetter && selected !== correct) {
@@ -656,6 +685,17 @@
         el.optionsList.appendChild(optionBtn);
       });
 
+      if (selected) {
+        const isCorrect = selected === correct;
+        el.feedbackBox.textContent = isCorrect
+          ? `Correct. ${correctOptionText}`
+          : `Incorrect. You chose ${selectedOptionText}. Correct answer: ${correctOptionText}.`;
+        el.feedbackBox.className = `feedback visible ${isCorrect ? "correct" : "incorrect"}`;
+      } else {
+        el.feedbackBox.textContent = "";
+        el.feedbackBox.className = "feedback";
+      }
+
       if (state.completed) {
         const explanation = (q.explanation || "No explanation available for this question.").trim();
         el.explanationBox.textContent = `Explanation: ${explanation}`;
@@ -673,23 +713,52 @@
     function finishQuiz() {
       state.completed = true;
       let correctCount = 0;
+      const wrongQuestions = [];
 
       state.activeQuestions.forEach((q, idx) => {
         const picked = (state.userAnswers[idx] || "").toUpperCase();
         const answer = (q.answer || "").toUpperCase();
         if (picked && picked === answer) {
           correctCount += 1;
+        } else {
+          wrongQuestions.push({
+            number: idx + 1,
+            category: q.category,
+            question: q.question,
+            selected: picked || "Not answered",
+            correct: answer,
+            explanation: q.explanation || "No explanation available."
+          });
         }
       });
 
       const total = state.activeQuestions.length;
       const attempted = Object.keys(state.userAnswers).length;
       const percent = total > 0 ? ((correctCount / total) * 100).toFixed(1) : "0.0";
+      const wrongSummary = wrongQuestions.length
+        ? `
+          <div>
+            <h4 style="margin:14px 0 8px;">Questions you got wrong</h4>
+            <div style="display:grid; gap:10px;">
+              ${wrongQuestions.map((item) => `
+                <div style="border:1px solid #ffd4ce; background:#fff8f7; border-radius:10px; padding:10px 12px;">
+                  <div style="font-weight:700; margin-bottom:4px;">${item.number}. ${item.category}</div>
+                  <div style="margin-bottom:6px; white-space:pre-wrap;">${item.question}</div>
+                  <div style="color:#7a271a;"><strong>Your answer:</strong> ${item.selected}</div>
+                  <div style="color:#0f5132;"><strong>Correct answer:</strong> ${item.correct}</div>
+                  <div class="small" style="margin-top:6px;">${item.explanation}</div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `
+        : `<p class="small">You got everything correct.</p>`;
 
       el.scoreBox.innerHTML = `
         <h3>Result: ${correctCount}/${total} (${percent}%)</h3>
         <p><strong>Attempted:</strong> ${attempted}/${total}</p>
         <p class="small">Correct options are now highlighted in green. Your wrong selections are highlighted in red.</p>
+        ${wrongSummary}
       `;
       el.scoreBox.classList.add("visible");
       renderQuestion();
