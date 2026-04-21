@@ -61,6 +61,41 @@
       gap: 18px;
     }
 
+    .top-nav {
+      width: min(1100px, 94vw);
+      margin: 18px auto 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+    }
+
+    .nav-link.active {
+      background: #102a43;
+      color: #f0f7ff;
+      border: 1px solid #0b1d2f;
+    }
+
+    .nav-link.alt {
+      background: #f2f8fc;
+      color: #1d7a8c;
+      border: 1px solid #c4d9e7;
+    }
+
     .panel {
       background: var(--card);
       backdrop-filter: blur(6px);
@@ -381,6 +416,11 @@
         margin-top: 14px;
       }
 
+      .top-nav {
+        width: min(100%, 96vw);
+        margin-top: 12px;
+      }
+
       .hero,
       .controls,
       .quiz {
@@ -403,6 +443,11 @@
   </style>
 </head>
 <body>
+  <nav class="top-nav" aria-label="Primary navigation">
+    <a class="nav-link active" href="./index.html">Quiz Page</a>
+    <a class="nav-link alt" href="./notes.html">Notes Page</a>
+  </nav>
+
   <main class="app">
     <section class="panel hero">
       <h1 id="quizTitle">Loading quiz...</h1>
